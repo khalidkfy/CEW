@@ -5,6 +5,7 @@ namespace App\Http\Controllers\main_page;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -81,7 +82,8 @@ class ProductController extends Controller
     {
         $product = Product::query()->findOrFail($id);
         $products = Product::where('category_id', $product->category_id)->get();
-        return view('pages.main_page.product.show', compact('product', 'products'));
+        $setting = Setting::query()->first();
+        return view('pages.main_page.product.show', compact('product', 'products', 'setting'));
     }
 
     public function edit($id)

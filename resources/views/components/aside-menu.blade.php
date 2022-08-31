@@ -252,7 +252,7 @@
                     </div>
 
                     <div class="menu-item">
-                        <a class="menu-link" href="{{ route('client.edit', ['id' => 1) }}" title="Privacy" data-bs-toggle="tooltip"
+                        <a class="menu-link" href="{{ route('client.edit', ['id' => 1]) }}" title="Privacy" data-bs-toggle="tooltip"
                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                             <i class="fa-brands fa-product-hunt fs-2"></i>
                             <span class="menu-title ml-5" style="margin-left: 17px;">Client Page</span>

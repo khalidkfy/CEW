@@ -44,12 +44,12 @@
                             <div class="col-md-4 col-6">
                                 <div class="item mb-4">
                                     <div class="item">
-                                        <figure><a href="">
+                                        <figure><a href="{{ route('product.show', ['id' => $product->id]) }}">
                                                 <img src="{{ asset('storage') . '/' . $product->cover_image }}"
                                                     alt=""></a></figure>
                                         <div>
-                                            <a href="" class="title-c">{{ $product->category->category_name }}</a>
-                                            <a href="" class="title-p">{{ $product->product_name }}</a>
+                                            <span>{{ $product->category->category_name }}</span>
+                                            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="title-p">{{ $product->product_name }}</a>
                                             <span class="price"><strong>{{ $product->price }} $</strong></span>
                                         </div>
                                     </div>
