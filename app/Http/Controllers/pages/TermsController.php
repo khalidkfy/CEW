@@ -81,6 +81,7 @@ class TermsController extends Controller
      */
     public function edit($id)
     {
+
         $term = Term::query()->findOrFail($id);
         return view('pages.terms_page.edit', compact('term'));
     }

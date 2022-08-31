@@ -4,10 +4,20 @@ namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+    public function index()
+    {
+        $client = Client::query()->first();
+        $setting = Setting::query()->first();
+
+        return view('pages.client.index', compact('client', 'setting'));
+    }
+
+
     public function edit($id)
     {
         $client = Client::query()->first();
@@ -28,12 +38,12 @@ class ClientsController extends Controller
 
         $image_path = null;
 
-        if($request->hasFile('header_image')) {
+        if ($request->hasFile('header_image')) {
             $file = $request->file('header_image');
-            $header_image = $file->store('/client',[
+            $header_image = $file->store('/client', [
                 'disk' => 'public'
             ]);
-        }else{
+        } else {
             $header_image = $client->header_image;
         }
 
@@ -52,14 +62,13 @@ class ClientsController extends Controller
         }
 
         $client->update([
-           'title' => $request->title,
-           'header_image' => $header_image,
-           'images' => $array_of_images,
+            'title' => $request->title,
+            'header_image' => $header_image,
+            'images' => $array_of_images,
         ]);
 
         toastr()->success('Successfully Updated');
 
         return redirect()->back();
-
     }
 }

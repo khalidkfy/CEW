@@ -45,9 +45,12 @@
                                 <div class="modal-body text-center">
 
                                         <!--begin::Image input-->
+                                        <label class="d-flex mb-4">
+                                            Slider Image
+                                        </label>
                                         <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(/assets/media/svg/avatars/blank.svg)">
                                             <!--begin::Image preview wrapper-->
-                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url(/assets/media/avatars/300-1.jpg)"></div>
+                                            <div class="image-input-wrapper w-125px h-125px" style=""></div>
                                             <!--end::Image preview wrapper-->
 
                                             <!--begin::Edit button-->
@@ -118,14 +121,14 @@
                                 {{ $image->id }}
                             </td>
                             <td>
-                                <img src="{{ asset('storage') . '/' . $image->body }}" alt="{{ $image->id }}" style="background-color: #DDD">
+                                <img src="{{ asset('storage') . '/' . $image->body }}" width="200" height="100" alt="{{ $image->id }}" style="background-color: #DDD">
                             </td>
                             <td style="width: 320px;">
                                 {{ 'Main Page -> Our Partners' }}
                             </td>
                             <td class="text-end">
                                 <button class="btn btn-danger" style="width: 110px;" data-bs-toggle="modal" data-bs-target="#partners_image-{{ $image->id }}">
-                                    <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                     <span>
                                         Delete
                                     </span>

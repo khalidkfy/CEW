@@ -55,7 +55,7 @@ class OurPartnersController extends Controller
 
         toastr()->success('Updated Successfully');
 
-        return redirect()->route('our_partners.index');
+        return redirect()->back();
     }
     /**
      * ? Slider Image For Our Partners Section

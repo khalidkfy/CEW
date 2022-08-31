@@ -73,7 +73,7 @@
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <div class="menu-item">
-                        <a class="menu-link" href="{{ route('box_header.index') }}" title="Main Page - Box Header"
+                        <a class="menu-link" href="{{ route('box_header.edit', ['id' => 1]) }}" title="Main Page - Box Header"
                             data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click"
                             data-bs-placement="right">
                             <i class="fa-solid fa-box fs-2"></i>
@@ -95,7 +95,7 @@
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
 
                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('our_partners.index') }}" title="Our Partners Table">
+                            <a class="menu-link" href="{{ route('our_partners.edit', ['id' => 1]) }}" title="Our Partners Table">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="#">
+                            <a class="menu-link" href="{{ route('our_partners.sliderImage') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

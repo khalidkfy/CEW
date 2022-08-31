@@ -53,11 +53,18 @@
                             {{ $testimonial->content }}
                         </td>
 
-                        <td class="text-end">
+                        <td class="text-end d-flex">
                             <a href="{{ route('testimonial.edit', ['id' => $testimonial->id]) }}" class="btn btn-primary" style="width: 90px;">
                                 <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                                 <span>
                                     Edit
+                                </span>
+                            </a>
+
+                            <a href="{{ route('testimonial.edit', ['id' => $testimonial->id]) }}" class="btn btn-danger" style="width: 110px;">
+                                <i class="fa-solid fa-trash"></i>
+                                <span>
+                                    Delete
                                 </span>
                             </a>
                         </td>

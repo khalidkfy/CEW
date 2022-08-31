@@ -3,8 +3,6 @@
 @section('page_title', 'Category Edit')
 
 @section('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('nav_title', 'Category Edit')

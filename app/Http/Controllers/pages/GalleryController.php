@@ -57,7 +57,7 @@ class GalleryController extends Controller
 
         $cover_text = null;
 
-//        $header_image = null;
+        //        $header_image = null;
 
         $galleries = [];
 
@@ -75,15 +75,15 @@ class GalleryController extends Controller
             $image_path = null;
         }
 
-//        if($request->hasFile('cover_text')) {
-//            $file = $request->file('cover_text');
-//
-//            $cover_text = $file->store('/gallery', [
-//                'disk' => 'public',
-//            ]);
-//        }
+        //        if($request->hasFile('cover_text')) {
+        //            $file = $request->file('cover_text');
+        //
+        //            $cover_text = $file->store('/gallery', [
+        //                'disk' => 'public',
+        //            ]);
+        //        }
 
-        if($request->hasFile('cover_text')) {
+        if ($request->hasFile('cover_text')) {
             $file = $request->file('cover_text');
 
             $cover_text = $file->store('/gallery', [
@@ -103,7 +103,6 @@ class GalleryController extends Controller
         toastr()->success('Successfully Created');
 
         return redirect()->route('gallery.index');
-
     }
 
     /**
@@ -115,7 +114,9 @@ class GalleryController extends Controller
     public function show($id)
     {
         $gallery = gallery::query()->findOrFail($id);
-        return view('pages.gallery.show', compact('gallery'));
+        $setting = Setting::query()->first();
+
+        return view('pages.gallery.show', compact('gallery', 'setting'));
     }
 
     /**
@@ -163,23 +164,23 @@ class GalleryController extends Controller
 
         $header_image =  $gallery->header_image;;
 
-        if($request->hasFile('cover_text')) {
+        if ($request->hasFile('cover_text')) {
             $file = $request->file('cover_text');
 
             $cover_text = $file->store('/gallery', [
                 'disk' => 'public',
             ]);
-        }else {
+        } else {
             $cover_text = $gallery->cover_text;
         }
 
-        if($request->hasFile('header_image')) {
+        if ($request->hasFile('header_image')) {
             $file = $request->file('header_image');
 
             $cover_text = $file->store('/gallery', [
                 'disk' => 'public',
             ]);
-        }else{
+        } else {
             $header_image =  $gallery->header_image;
         }
         $gallery->update([

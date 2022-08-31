@@ -6,7 +6,7 @@
     <div class="intro">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="caption">
                         <h1>
                             {{ $box_header->title }}
@@ -20,7 +20,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <div class="image position-relative">
                         <span class="img01">
                             <img src="{{ asset('front_assets/images/5a28b4aa188ca31.png') }}" alt="Logo">
@@ -83,7 +83,7 @@
             <div class="head">
                 <div class="d-flex align-items-center justify-content-between">
                     <h2>Our Services</h2>
-                    <a href="">View all</a>
+                    <a href="{{ route('services_page.index') }}">View all</a>
                 </div>
             </div>
             <div class="position-relative">
@@ -99,10 +99,12 @@
                                         {{ $service->service_name }}
                                     </h2>
                                     <p>
-                                        {{ $service->short_description }}
+                                        {{ Str::limit($service->short_description, 60) }}
                                     </p>
                                     <a class="btn btn-outline-primary"
-                                        href="{{ route('service.show', ['id' => $service->id]) }}">Read more</a>
+                                        href="{{ route('service.show', ['id' => $service->id]) }}">
+                                        {{ $service->button_text }}
+                                    </a>
                                 </div>
                             </div>
                         @endforeach

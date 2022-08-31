@@ -337,6 +337,7 @@ Route::namespace('/pages')
             'prefix' => ('/client'),
             'as' => 'client.',
         ], function () {
+            Route::get('/', [ClientsController::class, 'index'])->name('index')->withoutMiddleware('auth');
             Route::get('/{id}/edit', [ClientsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [ClientsController::class, 'update'])->name('update');
         });

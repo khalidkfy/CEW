@@ -3,8 +3,6 @@
 @section('page_title', 'Gallery Edit')
 
 @section('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('nav_title', 'Gallery Edit')
@@ -104,18 +102,7 @@
 @section('js')
 
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#kt_docs_ckeditor_classic'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
     <script>
         $(document).ready(function () {
             $('#MPheader_button_action').change(function () {

@@ -42,7 +42,6 @@
                     <th class="min-w-100px">Service Name</th>
                     <th class="min-w-100px">Short Description</th>
                     <th class="min-w-100px">Button Text</th>
-                    <th class="min-w-100px">Button Active</th>
                     <th class="text-end min-w-75px">Icon</th>
                     <th class="text-center min-w-100px pe-5">Operations</th>
                 </tr>
@@ -59,11 +58,6 @@
                     </td>
                     <td>
                         {{ $service->button_text }}
-                    </td>
-                    <td class="">
-                        <div class="form-check form-switch form-check-custom form-check me-10" style="justify-content: end">
-                            <input class="form-check-input h-30px w-50px" type="checkbox" value="@if($service->button_active == 1) 1 @else 0 @endif" id="MPheader_button_action" @if($service->button_active == 1) checked="checked" @endif/>
-                        </div>
                     </td>
 
                     <td class="text-end pe-0">

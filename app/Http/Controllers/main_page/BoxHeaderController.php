@@ -113,7 +113,7 @@ class BoxHeaderController extends Controller
 
         toastr()->success('Edited successfully');
 
-        return redirect()->route('box_header.index');
+        return redirect()->back();
     }
 
     /**
