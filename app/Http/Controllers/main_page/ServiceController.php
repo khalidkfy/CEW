@@ -4,6 +4,7 @@ namespace App\Http\Controllers\main_page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -17,8 +18,9 @@ class ServiceController extends Controller
     public function show($id)
     {
         $service = Service::query()->findOrFail($id);
+        $setting = Setting::query()->first();
 
-        return view('pages.main_page.service.show', compact('service'));
+        return view('pages.main_page.service.show', compact('service', 'setting'));
     }
 
     public function edit($id)

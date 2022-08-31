@@ -84,7 +84,7 @@ Route::namespace('/services')
             'as' => 'service.',
         ], function () {
             Route::get('/', [ServiceController::class, 'index'])->name('index');
-            Route::get('/{id}/show', [ServiceController::class, 'show'])->name('show');
+            Route::get('/{id}/show', [ServiceController::class, 'show'])->name('show')->withoutMiddleware(['auth']);
             Route::get('/{id}/edit', [ServiceController::class, 'edit'])->name('edit');
             Route::put('/{id}', [ServiceController::class, 'update'])->name('update');
 
