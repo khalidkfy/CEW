@@ -11,6 +11,7 @@ use App\Http\Controllers\main_page\WhoAreWeController;
 use App\Http\Controllers\main_page\WhyChooseUsController;
 use App\Http\Controllers\pages\AboutUsController;
 use App\Http\Controllers\pages\CertificationsController;
+use App\Http\Controllers\pages\ClientsController;
 use App\Http\Controllers\pages\FaqsController;
 use App\Http\Controllers\pages\GalleryController;
 use App\Http\Controllers\pages\PrivacyController;
@@ -306,14 +307,14 @@ Route::namespace('/pages')
             Route::get('/index', [GalleryController::class, 'index'])->name('index');
             Route::get('/create', [GalleryController::class, 'create'])->name('create');
             Route::post('/', [GalleryController::class, 'store'])->name('store');
-            Route::get('/{id}', [GalleryController::class, 'show'])->name('show');
+            Route::get('/{id}', [GalleryController::class, 'show'])->name('show')->withoutMiddleware(['auth']);
             Route::get('/{id}/edit', [GalleryController::class, 'edit'])->name('edit');
             Route::put('/{id}', [GalleryController::class, 'update'])->name('update');
         });
     });
 // End About Us Controller
 
-// End Terms Controller
+// End setting Controller
 Route::namespace('/pages')
     ->middleware(['auth'])
     ->group(function () {
@@ -325,4 +326,19 @@ Route::namespace('/pages')
             Route::put('/{id}', [SettingController::class, 'update'])->name('update');
         });
     });
-// End About Us Controller
+// End setting Controller
+
+
+// End setting Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/client'),
+            'as' => 'client.',
+        ], function () {
+            Route::get('/{id}/edit', [ClientsController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [ClientsController::class, 'update'])->name('update');
+        });
+    });
+// End setting Controller
