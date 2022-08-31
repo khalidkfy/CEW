@@ -134,9 +134,11 @@
                                         </a>
                                     </figure>
                                     <div>
-                                        <a href="{{ route('product.show', ['id' => $product->id]) }}" class="title-c">
-                                            {{ $product->category->category_name }}
-                                        </a>
+                                        @if($product->category)
+                                            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="title-c">
+                                                {{ $product->category->category_name }}
+                                            </a>
+                                        @endif
                                         <a href="{{ route('product.show', ['id' => $product->id]) }}" class="title-p">
                                             {{ $product->product_name }}
                                         </a>
