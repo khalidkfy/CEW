@@ -62,7 +62,7 @@ class BoxHeaderController extends Controller
      * @param int $id
      * @return Application|Factory|View
      */
-    public function edit($id): View|Factory|Application
+    public function edit($id)
     {
         $box_header = MPBoxHeader::findOrFail($id);
 
@@ -92,13 +92,13 @@ class BoxHeaderController extends Controller
 
         $image = null;
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
 
             $image = $file->store('/box_header_image', [
                 'disk' => 'public',
             ]);
-        }else{
+        } else {
             $image = $box_header->image;
         }
 

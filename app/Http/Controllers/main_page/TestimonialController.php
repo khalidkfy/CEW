@@ -15,7 +15,7 @@ class TestimonialController extends Controller
     /**
      * @return Factory|View|Application
      */
-    public function index(): Factory|View|Application
+    public function index()
     {
         $testimonials = Testimonial::all();
 
@@ -25,7 +25,7 @@ class TestimonialController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function create(): View|Factory|Application
+    public function create()
     {
         return view('pages.main_page.testimonial.create');
     }
@@ -34,7 +34,7 @@ class TestimonialController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required'],
@@ -55,7 +55,7 @@ class TestimonialController extends Controller
      * @param $id
      * @return Application|Factory|View
      */
-    public function edit($id): View|Factory|Application
+    public function edit($id)
     {
         $testimonial = Testimonial::query()->findOrFail($id);
         return view('pages.main_page.testimonial.edit', compact('testimonial'));
@@ -66,9 +66,9 @@ class TestimonialController extends Controller
      * @param $id
      * @return RedirectResponse
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
-//        dd($request);
+        //        dd($request);
         $request->validate([
             'name' => ['required'],
             't_content' => ['required'],
@@ -84,7 +84,5 @@ class TestimonialController extends Controller
         toastr()->success('Successfully Updated');
 
         return redirect()->route('testimonial.index');
-
     }
-
 }

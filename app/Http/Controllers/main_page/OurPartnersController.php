@@ -18,7 +18,7 @@ class OurPartnersController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function index(): View|Factory|Application
+    public function index()
     {
         $our_partner = MPOurPartners::query()->first();
         return view('pages.main_page.our_partners.index', compact('our_partner'));
@@ -28,7 +28,7 @@ class OurPartnersController extends Controller
      * @param $id
      * @return Application|Factory|View
      */
-    public function edit($id): View|Factory|Application
+    public function edit($id)
     {
         $our_partner = MPOurPartners::query()->findOrFail($id);
 
@@ -61,7 +61,7 @@ class OurPartnersController extends Controller
      * ? Slider Image For Our Partners Section
      * @return Application|Factory|View
      */
-    public function sliderImage(): View|Factory|Application
+    public function sliderImage()
     {
         $images = Image::query()->where('imageable_type', 'App/Models/MPOurPartners')->get();
         return view('pages.main_page.our_partners.slider', compact('images'));
@@ -102,7 +102,7 @@ class OurPartnersController extends Controller
      * @return RedirectResponse
      * ? Delete Slider Image For Our Partners
      */
-    public function deleteSliderImage($id): RedirectResponse
+    public function deleteSliderImage($id)
     {
         $image = Image::query()->findOrFail($id);
 
@@ -118,7 +118,7 @@ class OurPartnersController extends Controller
      * @return JsonResponse
      * ? Update Button Active
      */
-    public function updateButtonActive(Request $request): JsonResponse
+    public function updateButtonActive(Request $request)
     {
 
         $our_partner = MPOurPartners::query()->first();
