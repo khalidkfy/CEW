@@ -275,6 +275,39 @@
                         </a>
                     </div>
 
+
+                    <div class="menu-item">
+                        <div class="menu-content pt-8 pb-2">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1" style="margin-left: -12px">
+                                Contact Box
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link" href="{{ route('contact_us.index')}}" title="Privacy" data-bs-toggle="tooltip"
+                           data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <i class="fa-brands fa-product-hunt fs-2"></i>
+                            <span class="menu-title ml-5" style="margin-left: 17px;">Contact Us</span>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-content pt-8 pb-2">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1" style="margin-left: -12px">
+                                Sales Inquiry Box
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <a class="menu-link" href="{{ route('sales.index')}}" title="Privacy" data-bs-toggle="tooltip"
+                           data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <i class="fa-brands fa-product-hunt fs-2"></i>
+                            <span class="menu-title ml-5" style="margin-left: 17px;">Sales Inquiry</span>
+                        </a>
+                    </div>
+
 {{--                    --}}{{-- Start Our Partners Dropdown --}}
 {{--                    <span class="menu-link">--}}
 {{--                        <span class="menu-icon">--}}

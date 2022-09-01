@@ -12,10 +12,12 @@ use App\Http\Controllers\main_page\WhyChooseUsController;
 use App\Http\Controllers\pages\AboutUsController;
 use App\Http\Controllers\pages\CertificationsController;
 use App\Http\Controllers\pages\ClientsController;
+use App\Http\Controllers\pages\ContactUsController;
 use App\Http\Controllers\pages\FaqsController;
 use App\Http\Controllers\pages\GalleryController;
 use App\Http\Controllers\pages\PrivacyController;
 use App\Http\Controllers\pages\ProductsPageController;
+use App\Http\Controllers\pages\SalesController;
 use App\Http\Controllers\pages\ServicesPageController;
 use App\Http\Controllers\pages\SettingController;
 use App\Http\Controllers\pages\TermsController;
@@ -343,3 +345,35 @@ Route::namespace('/pages')
         });
     });
 // End setting Controller
+
+// End contact_us Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/contact_us'),
+            'as' => 'contact_us.',
+        ], function () {
+            Route::get('/', [ContactUsController::class, 'contact_us'])->name('contact')->withoutMiddleware('auth');
+            Route::get('/index', [ContactUsController::class, 'index'])->name('index');
+            Route::post('/', [ContactUsController::class, 'store'])->name('store')->withoutMiddleware('auth');;
+            Route::delete('/{id}', [ContactUsController::class, 'destroy'])->name('delete');
+        });
+    });
+// End contact_us Controller
+
+
+// End contact_us Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/sales_inquiry'),
+            'as' => 'sales.',
+        ], function () {
+            Route::get('/', [SalesController::class, 'index'])->name('index');
+            Route::post('/', [SalesController::class, 'store'])->name('store')->withoutMiddleware('auth');
+            Route::delete('/{id}', [SalesController::class, 'destroy'])->name('delete');
+        });
+    });
+// End contact_us Controller

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ asset('front_assets/images/Cew-32x32.png') }}">
     <link rel="stylesheet" href="{{ asset('front_assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front_assets/css/all.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
@@ -64,7 +65,7 @@
                             </div>
                         </div>
                         <div class="link">
-                            <a class="btn btn-primary" href="">Contact us</a>
+                            <a class="btn btn-primary" href="{{ route('contact_us.contact') }}">Contact us</a>
                         </div>
                     </div>
                 </nav>
