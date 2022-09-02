@@ -101,6 +101,13 @@
                         </select>
                     </div>
                     {{-- Start category_name --}}
+
+                    <div class="col-md-6">
+                        <label class="required form-label">Sub Category</label>
+                        <select class="form-select" aria-label="Select example" name="sub_category_id" id="product_category">
+
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -190,6 +197,35 @@
 
 @section('js')
 
+    <script>
+        $(document).ready(function() {
+            $('select[name="category_id"]').change(function (){
+                var category_id = $(this).val();
+
+                $.ajax({
+                    url: '/products/sub_category',
+                    type: 'get',
+                    data: {
+                        category_id: category_id,
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        $('select[name="sub_category_id"]').empty();
+                        $.each(data.data, function(key, value) {
+                            $('select[name="sub_category_id"]').append(
+                                '<option value="' + value.id + '">' + value.category_name +'</option>'
+                            );
+                        });
+                    },
+                    error: function(data){
+                        console.log(data)
+                    },
+                })
+
+            })
+        })
+    </script>
+
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 
@@ -213,49 +249,6 @@
                 console.error(error);
             });
     </script>
-    <script>
-        $(document).ready(function () {
-            $('#MPheader_button_action').change(function () {
-                if ($(this).val() == 1) {
 
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-
-                } else if ($(this).val() == 0) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-                }
-                ;
-            })
-        })
-
-    </script>
 
 @endsection

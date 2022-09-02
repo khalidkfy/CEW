@@ -5222,7 +5222,6 @@ License: For each use you must have a valid license purchased only from above li
 <script src="{{ asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
 <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
 
-
 @yield('js')
 <!--end::Page Custom Javascript-->
 <!--end::Javascript-->

@@ -67,6 +67,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
+            'sub_category_id' => $request->sub_category_id,
             'long_description' => $request->long_description,
             'images' => $images,
             'cover_image' => $cover_image,
@@ -89,7 +90,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::query()->findOrFail($id);;
-        $categories = Category::all();
+        $categories = Category::where('type', 'Category')->get();
         return view('pages.main_page.product.edit', compact('product', 'categories'));
     }
 
@@ -139,6 +140,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'category_id' => $request->category_id,
+            'sub_category_id' => $request->sub_category_id,
             'long_description' => $request->long_description,
             'images' => $array_of_images,
             'cover_image' => $cover_image,
@@ -162,8 +164,9 @@ class ProductController extends Controller
 
     public function getSubCategory(Request $request)
     {
+        $sub_categories = Category::where('parent_id', $request->category_id)->get();
         return response()->json([
-            'done' => 'tt',
+            'data' => $sub_categories,
         ]);
     }
 }

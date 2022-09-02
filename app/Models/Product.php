@@ -14,6 +14,7 @@ class Product extends Model
     protected $fillable = [
         'product_name',
         'category_id',
+        'sub_category_id',
         'price',
         'description',
         'long_description',
@@ -28,11 +29,18 @@ class Product extends Model
     /**
      * ! Relations
      * ? With Category ( Reverse Relation => One To Many )
+     * ? With Sub Category ( Reverse Relation => One To Many )
      */
 
     // Category
     public function category(): belongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    // Sub Category
+    public function subCategory(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'sub_category_id', 'id');
     }
 }

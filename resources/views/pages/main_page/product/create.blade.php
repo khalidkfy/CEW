@@ -101,18 +101,12 @@
                     </div>
                     {{-- Start category_name --}}
 
-                    {{-- Start sub_category_name  --}}
                     <div class="col-md-6">
-                        <label class="required form-label">Category</label>
-                        <select class="form-select" aria-label="Select example" name="category_id" id="sub_product_category">
-                            @foreach( $categories as $category )
-                                <option value="{{ $category->id }}">
-                                    {{ $category->category_name }}
-                                </option>
-                            @endforeach
+                        <label class="required form-label">Sub Category</label>
+                        <select class="form-select" aria-label="Select example" name="sub_category_id" id="product_category">
+
                         </select>
                     </div>
-                    {{-- Start sub_category_name --}}
                 </div>
 
                 <div class="row">
@@ -189,10 +183,37 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('select[name="category_id"]').change(function (){
+                var category_id = $(this).val();
+
+                $.ajax({
+                    url: '/products/sub_category',
+                    type: 'get',
+                    data: {
+                        category_id: category_id,
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        $('select[name="sub_category_id"]').empty();
+                        $.each(data.data, function(key, value) {
+                            $('select[name="sub_category_id"]').append(
+                                '<option value="' + value.id + '">' + value.category_name +'</option>'
+                            );
+                        });
+                    },
+                    error: function(data){
+                        console.log(data)
+                    },
+                })
+
+            })
+        })
+    </script>
 
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-    <script src="{{ asset('front_assets/js/main.js') }}"></script>
+
 
     <script>
         ClassicEditor

@@ -3,8 +3,6 @@
 @section('page_title', 'Our Partners Edit')
 
 @section('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('nav_title', 'Our Partners Edit')
@@ -103,63 +101,5 @@
 @endsection
 
 @section('js')
-
-    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#kt_docs_ckeditor_classic'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#MPheader_button_action').change(function () {
-                if ($(this).val() == 1) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-
-                } else if ($(this).val() == 0) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-                }
-                ;
-            })
-        })
-
-    </script>
 
 @endsection

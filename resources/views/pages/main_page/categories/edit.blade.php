@@ -45,6 +45,22 @@
                 </div>
                 {{-- End category_name --}}
 
+                {{-- Start Get All Sub Gategory --}}
+                @if($category->type == 'Category')
+                    <label class="required form-label">
+                        Sub Category
+                    </label>
+                    @foreach($sub_categories as $sub_category)
+                        <div class="form-check form-check-custom form-check-solid mb-3">
+                            <input class="form-check-input" name="sub_category[]" type="checkbox" value="{{ $sub_category->category_name }}" id="flexCheckDefault-{{ $sub_category->id }}" @if($sub_category->parent_id == $category->id ) checked @endif/>
+                            <label class="form-check-label" for="flexCheckDefault">
+                               {{ $sub_category->category_name }}
+                            </label>
+                        </div>
+                    @endforeach
+                @endif
+                {{-- End Get All Sub Gategory --}}
+
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save

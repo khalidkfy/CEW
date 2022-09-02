@@ -43,6 +43,7 @@ class CategoryController extends Controller
 
         Category::create([
             'category_name' => $request->category_name,
+            'type' => $request->type,
         ]);
 
         toastr()->success('Category Successfully Created');
@@ -70,8 +71,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::query()->findOrFail($id);
+        $sub_categories = Category::where('type', 'Sub_Category')->get();
 
-        return view('pages.main_page.categories.edit', compact('category'));
+        return view('pages.main_page.categories.edit', compact('category', 'sub_categories'));
     }
 
     /**
@@ -92,6 +94,24 @@ class CategoryController extends Controller
         $category->update([
             'category_name' => $request->category_name,
         ]);
+
+        $set_to_null = Category::query()
+            ->whereNotIn('category_name', $request->sub_category)
+            ->where('type', 'Sub_Category')
+            ->where('parent_id', $category->id)
+            ->get();
+        foreach($request->sub_category as $sub_category){
+            $update_sub_category = Category::where('category_name', $sub_category)->first();
+            $update_sub_category->update([
+               'parent_id' => $category->id,
+            ]);
+
+        }
+        foreach ($set_to_null as $null) {
+            $null->update([
+                'parent_id' => null,
+            ]);
+        }
 
         toastr()->success('Category Successfully Updated');
 

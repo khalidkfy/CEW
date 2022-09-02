@@ -31,7 +31,7 @@
                 <!--end::Export buttons-->
             </div>
             <div class="card-toolbar flex-row-fluid justify-content-end gap-5" style="margin-top: 40px !important;">
-                <a href="#" class="btn btn-success">Add Service</a>
+                <a href="{{ route('service.create') }}" class="btn btn-success">Add Service</a>
             </div>
         </div>
         <div class="card-body">
@@ -63,20 +63,24 @@
                     <td class="text-end pe-0">
                         <img src="{{ asset('front_assets') . '/' . $service->icon }}" width="50" height="50">
                     </td>
-                    <td class="text-end">
-                        <a href="{{ route('service.edit', ['id' => $service->id]) }}" class="btn btn-primary" style="width: 90px;">
+                    <td class="text-end d-flex justify-content-center">
+                        <a href="{{ route('service.edit', ['id' => $service->id]) }}" class="btn btn-primary" style="width: 90px; margin-right: 10px">
                             <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                             <span>
                                 Edit
                             </span>
                         </a>
 
-                        <button class="btn btn-danger" style="display: inline-flex;">
-                            <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
-                            <span>
-                                Delete
-                            </span>
-                        </button>
+                        <form action="{{ route('service.delete', ['id' => $service->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" style="display: inline-flex;">
+                                <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
+                                <span>
+                                    Delete
+                                </span>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -186,50 +190,6 @@
         KTUtil.onDOMContentLoaded(function () {
             KTDatatablesButtons.init();
         });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#MPheader_button_action').change(function() {
-                if ($(this).val() == 1) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data:{
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data.action)
-                        },
-                        error: function(data) {
-                            console.log(data)
-                        },
-                    })
-
-                }else if ($(this).val() == 0){
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data:{
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data.action)
-                        },
-                        error: function(data) {
-                            console.log(data)
-                        },
-                    })
-                };
-            })
-        })
-
     </script>
 
 @endsection

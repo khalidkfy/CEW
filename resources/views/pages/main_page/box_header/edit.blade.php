@@ -3,6 +3,9 @@
 @section('page_title', 'Box Header Edit')
 
 @section('css')
+    <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+
 @endsection
 
 @section('nav_title', 'Box Header Edit')
@@ -173,49 +176,16 @@
 
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#MPheader_button_action').change(function () {
-                if ($(this).val() == 1) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-
-                } else if ($(this).val() == 0) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-                }
-                ;
-            })
+<script>
+    ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .then(editor => {
+            console.log(editor);
         })
+        .catch(error => {
+            console.error(error);
+    });
+</script>
 
-    </script>
 
 @endsection

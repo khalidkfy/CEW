@@ -87,9 +87,12 @@ Route::namespace('/services')
             'as' => 'service.',
         ], function () {
             Route::get('/', [ServiceController::class, 'index'])->name('index');
+            Route::get('/create', [ServiceController::class, 'create'])->name('create');
+            Route::post('/', [ServiceController::class, 'store'])->name('store');
             Route::get('/{id}/show', [ServiceController::class, 'show'])->name('show')->withoutMiddleware(['auth']);
             Route::get('/{id}/edit', [ServiceController::class, 'edit'])->name('edit');
             Route::put('/{id}', [ServiceController::class, 'update'])->name('update');
+            Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('delete');
 
             // Slider
             Route::get('/slider', [ServiceController::class, 'sliderImage'])->name('sliderImage');
@@ -133,7 +136,7 @@ Route::namespace('/product')
             Route::delete('/{id}', [ProductController::class, 'destroy'])->name('delete');
 
             // Ajax For Sub Category
-            Route::post('/sub_category', [ProductController::class, 'getSubCategory'])->name('getSubCategory');
+            Route::get('/sub_category', [ProductController::class, 'getSubCategory'])->name('getSubCategory');
         });
     });
 // End Product Controller

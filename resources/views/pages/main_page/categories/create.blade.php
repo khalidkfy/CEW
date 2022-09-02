@@ -32,7 +32,7 @@
                 @csrf
 
                 {{-- Start category_name --}}
-                <div class="mb-10">
+                <div class="col-md-6 mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Category</label>
                     <input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" placeholder="Put Some Words For Title Here"
                            />
@@ -43,6 +43,14 @@
                     @enderror
                 </div>
                 {{-- End category_name --}}
+
+                <div class="col-md-6 mb-12">
+                    <label class="required form-label">Type</label>
+                    <select class="form-select col-md-6" aria-label="Select example" name="type">
+                        <option value="Category">Category</option>
+                        <option value="Sub_Category">Sub Category</option>
+                    </select>
+                </div>
 
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
