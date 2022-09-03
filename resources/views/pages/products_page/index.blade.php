@@ -13,7 +13,7 @@
             <div class="row mt-3">
                 <div class="col-lg-3 col-md-4">
                     <div class="sidebar">
-                        <h2>All Catogare</h2>
+                        <h2>All Category</h2>
                         <ul>
                             @foreach($categoriesWithParents as $category)
                                 <li class="drop-menu">
