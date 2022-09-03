@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\ContactUs;
 use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,7 +20,8 @@ class ContactUsController extends Controller
     public function contact_us()
     {
         $setting = Setting::query()->first();
-        return view('pages.contact_us.contact', compact('setting'));
+        $certifications = Certification::query()->where('type', 'Footer')->get();
+        return view('pages.contact_us.contact', compact('setting', 'certifications'));
     }
 
     /**

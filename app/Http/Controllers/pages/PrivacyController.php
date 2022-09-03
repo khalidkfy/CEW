@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Privacy;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ class PrivacyController extends Controller
     {
         $privacies = Privacy::all();
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.privacy_page.privacy', compact('privacies', 'setting'));
+        return view('pages.privacy_page.privacy', compact('privacies', 'setting', 'certifications'));
     }
     /**
      * Display a listing of the resource.

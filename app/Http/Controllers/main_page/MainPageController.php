@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\main_page;
 
+use App\Models\Certification;
 use App\Models\Image;
 use App\Models\MPWhoWeAre;
 use App\Models\MPWhyChooseUs;
@@ -35,6 +36,8 @@ class MainPageController extends Controller
         $data['testimonials'] = Testimonial::query()->limit(3)->get();
 
         $data['setting'] = Setting::query()->first();
+
+        $data['certifications'] = Certification::query()->where('type', 'Footer')->get();
 
         return view('pages.main_page.index', $data);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\main_page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Certification;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $categories = Category::all();
-        return view('pages.main_page.product.index', compact('products', 'categories'));
+        $certifications = Certification::query()->where('type', 'Services')->get();
+        return view('pages.main_page.product.index', compact('products', 'categories', 'certifications'));
     }
 
     public function create()
@@ -84,7 +86,8 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id);
         $products = Product::where('category_id', $product->category_id)->get();
         $setting = Setting::query()->first();
-        return view('pages.main_page.product.show', compact('product', 'products', 'setting'));
+        $certifications = Certification::query()->where('type', 'Footer')->get();
+        return view('pages.main_page.product.show', compact('product', 'products', 'setting', 'certifications'));
     }
 
     public function edit($id)

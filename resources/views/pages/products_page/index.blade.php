@@ -15,7 +15,7 @@
                     <div class="sidebar">
                         <h2>All Category</h2>
                         <ul>
-                            @foreach($categoriesWithParents as $category)
+                            @foreach($categories as $category)
                                 <li class="drop-menu">
                                     <a class="link-item" href="javascript:void(0)">
                                         {{ $category->category_name }}
@@ -31,9 +31,9 @@
                                     </ul>
                                 </li>
                             @endforeach
-                            @foreach($categories as $category)
-                                <li><a href="">{{ $category->category_name }}</a></li>
-                            @endforeach
+{{--                            @foreach($categories as $category)--}}
+{{--                                <li><a href="">{{ $category->category_name }}</a></li>--}}
+{{--                            @endforeach--}}
 
                         </ul>
                     </div>

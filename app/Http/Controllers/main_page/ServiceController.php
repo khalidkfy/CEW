@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\main_page;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,7 +20,9 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::all();
-        return view('pages.main_page.service.index', compact('services'));
+
+        $certifications = Certification::query()->where('type', 'Footer')->get();
+        return view('pages.main_page.service.index', compact('services', 'certifications'));
     }
 
     /**
@@ -99,8 +102,9 @@ class ServiceController extends Controller
     {
         $service = Service::query()->findOrFail($id);
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.main_page.service.show', compact('service', 'setting'));
+        return view('pages.main_page.service.show', compact('service', 'setting', 'certifications'));
     }
 
     /**

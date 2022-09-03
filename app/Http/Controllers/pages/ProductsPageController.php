@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Certification;
 use App\Models\Product;
 use App\Models\ProductPage;
 use App\Models\Setting;
@@ -18,11 +19,11 @@ class ProductsPageController extends Controller
 
         $products = Product::query()->limit(6)->get();
 
-        $categoriesWithParents = Category::whereNull('parent_id')->limit(2)->get();
-        $categories = Category::whereNotNull('parent_id')->limit(3)->get();
+        $categories = Category::whereNull('parent_id')->get();
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Services')->get();
 
-        return view('pages.products_page.index', compact('product_page', 'products', 'categoriesWithParents', 'categories', 'setting'));
+        return view('pages.products_page.index', compact('product_page', 'products', 'categories', 'setting', 'certifications'));
 
     }
 

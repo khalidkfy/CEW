@@ -229,6 +229,24 @@ Route::namespace('/pages')
             Route::get('/{id}/edit', [CertificationsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [CertificationsController::class, 'update'])->name('update');
             Route::delete('/{id}', [CertificationsController::class, 'destroy'])->name('delete');
+
+            // For Product
+            Route::get('/about_certification', [CertificationsController::class, 'aboutCertification'])->name('aboutCertification');
+            Route::get('/create_about_certification', [CertificationsController::class, 'aboutCreateCertification'])->name('aboutCreateCertification');
+            Route::post('/about_certification', [CertificationsController::class, 'aboutCertificationStore'])->name('aboutCertificationStore');
+            Route::get('/{id}/about_edit', [CertificationsController::class, 'aboutEditCertification'])->name('aboutEditCertification');
+            Route::put('/{id}/about_certification', [CertificationsController::class, 'aboutUpdateCertification'])->name('aboutUpdateCertification');
+            Route::delete('/{id}/about_certification', [CertificationsController::class, 'aboutDestroyCertification'])->name('aboutDeleteCertification');
+
+            // For Footer
+            Route::get('/footer_certification', [CertificationsController::class, 'footerCertification'])->name('footerCertification');
+            Route::get('/create_footer_certification', [CertificationsController::class, 'footerCreateCertification'])->name('footerCreateCertification');
+            Route::post('/footer_certification', [CertificationsController::class, 'footerCertificationStore'])->name('footerCertificationStore');
+            Route::get('/{id}/footer_edit', [CertificationsController::class, 'footerEditCertification'])->name('footerEditCertification');
+            Route::put('/{id}/footer_certification', [CertificationsController::class, 'footerUpdateCertification'])->name('footerUpdateCertification');
+            Route::delete('/{id}/footer_certification', [CertificationsController::class, 'footerDestroyCertification'])->name('footerDeleteCertification');
+
+
         });
     });
 // End services_page Controller

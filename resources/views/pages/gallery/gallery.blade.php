@@ -19,7 +19,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-7 d-none d-lg-block">
+                    <div class="col-lg-7 d-none d-lg-block" style="display: flex !important; justify-content: center;">
                         <figure>
                             <img src="{{ asset('storage') . '/' . $gallery->header_image }}"
                                 alt=""></figure>

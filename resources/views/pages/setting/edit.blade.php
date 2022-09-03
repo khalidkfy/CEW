@@ -143,19 +143,6 @@
                     </div>
                 </div>
 
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Certifications Image</label>
-                                <input class="form-control" name="certifications[]" type="file" id="formFile" multiple>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save

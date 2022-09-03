@@ -13,10 +13,12 @@ class AboutUsController extends Controller
     public function index()
     {
         $about_us = AboutUs::query()->first();
-        $certifications = Certification::query()->limit(4)->get();
+        $about_certifications = Certification::query()->where('type', 'About')->get();
         $setting = Setting::query()->first();
 
-        return view('pages.about.index', compact('about_us', 'certifications', 'setting'));
+        $certifications = Certification::query()->where('type', 'Footer')->get();
+
+        return view('pages.about.index', compact('about_us', 'about_certifications', 'setting', 'certifications'));
     }
 
     public function edit($id)

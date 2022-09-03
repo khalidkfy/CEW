@@ -167,23 +167,6 @@
                     <!--end::Icon-->
                </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                    <input type="file" class="form-control" name="images[]" id="inputGroupFile01" multiple>
-                </div>
-
-                {{-- Slider --}}
-                <div class="tns">
-                    <div data-tns="true" data-tns-nav-position="bottom" data-tns-controls="false">
-                        @foreach( $product->images as $image )
-                            <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
-                                <img src="{{ $image }}" class="card-rounded shadow mw-100" alt="" />
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save

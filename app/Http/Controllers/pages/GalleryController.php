@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\gallery;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class GalleryController extends Controller
         $galleries = gallery::all();
         $gallery = gallery::query()->first();
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Services')->get();
 
-        return view('pages.gallery.gallery', compact('galleries', 'gallery', 'setting'));
+        return view('pages.gallery.gallery', compact('galleries', 'gallery', 'setting', 'certifications'));
     }
     /**
      * Display a listing of the resource.

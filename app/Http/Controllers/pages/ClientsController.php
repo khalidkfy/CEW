@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Client;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class ClientsController extends Controller
         $client = Client::query()->first();
         $setting = Setting::query()->first();
 
-        return view('pages.client.index', compact('client', 'setting'));
+        $certifications = Certification::query()->where('type', 'Footer')->get();
+
+        return view('pages.client.index', compact('client', 'setting', 'certifications'));
     }
 
 

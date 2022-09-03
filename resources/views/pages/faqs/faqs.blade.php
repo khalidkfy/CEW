@@ -13,14 +13,14 @@
             <div class="content">
                 <div class="accordion" id="accordionExample">
                     @foreach($faqs as $faq)
-                        <div class="accordion-item">
+                        <div class="accordion-item ">
                             <h2 class="accordion-header" id="headingOne-{{ $faq->id }}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button " type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne-{{ $faq->id }}" aria-controls="collapseOne">
                                     {{ $faq->title }}
                                 </button>
                             </h2>
-                            <div id="collapseOne-{{ $faq->id }}" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            <div id="collapseOne-{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     {!! \Illuminate\Support\Str::words($faq->description, -1, '...') !!}

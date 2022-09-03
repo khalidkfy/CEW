@@ -17,7 +17,7 @@ class ServicesPageController extends Controller
 
         $services = Service::query()->limit(8)->get();
 
-        $certifications = Certification::all();
+        $certifications = Certification::query()->where('type', 'Services')->get();
         $setting = Setting::query()->first();
 
         return view('pages.services_page.index', compact('services_page','services', 'certifications', 'setting'));

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Setting;
 use App\Models\Term;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class TermsController extends Controller
     {
         $terms = Term::all();
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.terms_page.terms', compact('terms', 'setting'));
+        return view('pages.terms_page.terms', compact('terms', 'setting', 'certifications'));
     }
     /**
      * Display a listing of the resource.

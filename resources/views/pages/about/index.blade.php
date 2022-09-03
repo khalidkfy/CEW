@@ -21,7 +21,7 @@
                     <h2>Accreditation certificates</h2>
                 </div>
                 <div class="row justify-content-center">
-                    @foreach($certifications as $certification)
+                    @foreach($about_certifications as $certification)
                         <div class="col-6 col-md-4 col-lg-3">
                             <div class="item mb-4">
                                 <figure><img src="{{ asset('storage') . '/' . $certification->image }}" alt=""></figure>

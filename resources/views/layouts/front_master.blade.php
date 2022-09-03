@@ -102,10 +102,10 @@
                                 @php
                                     $limit = 0;
                                 @endphp
-                                @foreach ($setting->certifications as $cert)
+                                @foreach ($certifications as $cert)
                                     <?php if($limit == 3) break; ?>
                                     <a href="">
-                                        <img src="{{ asset('storage') . '/' . $cert }}" alt="">
+                                        <img src="{{ asset('storage') . '/' . $cert->image }}" alt="">
                                     </a>
                                     <?php $limit++; ?>
                                 @endforeach

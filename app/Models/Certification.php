@@ -13,5 +13,6 @@ class Certification extends Model
         'title',
         'image',
         'description',
+        'type',
     ];
 }

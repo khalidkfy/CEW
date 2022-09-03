@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Faqs;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class FaqsController extends Controller
         $faqs = Faqs::all();
         $faq = Faqs::query()->first();
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.faqs.faqs', compact('faqs', 'faq', 'setting'));
+        return view('pages.faqs.faqs', compact('faqs', 'faq', 'setting', 'certifications'));
     }
     public function index()
     {

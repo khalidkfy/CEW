@@ -196,35 +196,15 @@
                     </div>
                 </div>
 
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route('services_page.edit', ['id' => 1]) }}" title="Main Page - Products" data-bs-toggle="tooltip"
+                       data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                        <i class="fa-brands fa-product-hunt fs-2"></i>
+                        <span class="menu-title ml-5" style="margin-left: 17px;">Service Page</span>
+                    </a>
+                </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <i class="fa-solid fa-handshake fs-2 mr-5" style="margin-top: -7px; color:#a6a6a9"></i>
-                        </span>
-                        <span class="menu-title">Services Page</span>
-                        <span class="menu-arrow"></span>
-                    </span>
 
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('services_page.edit', ['id' => 1]) }}" title="Our Partners Table">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Services Page Edit</span>
-                            </a>
-                        </div>
-
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('certification.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Certifications Table</span>
-                            </a>
-                        </div>
-                    </div>
 
                     <div class="menu-item">
                         <a class="menu-link" href="{{ route('about.edit', ['id' => 1]) }}" title="About Us" data-bs-toggle="tooltip"
@@ -274,6 +254,58 @@
                         </a>
                     </div>
 
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+
+                        <div class="menu-item">
+                            <div class="menu-content pt-8 pb-2">
+                                <span class="menu-section text-muted text-uppercase fs-8 ls-1" style="margin-left: -12px">
+                                    Certifications
+                                </span>
+                            </div>
+                        </div>
+
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="fa-solid fa-handshake fs-2 mr-5" style="margin-top: -7px; color:#a6a6a9"></i>
+                            </span>
+                            <span class="menu-title">Certifications</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+
+                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('certification.index') }}" title="Service Certifications">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Services Certification</span>
+                                </a>
+                            </div>
+
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('certification.aboutCertification') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">About Us Certification</span>
+                                </a>
+                            </div>
+
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('certification.footerCertification') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Footer Certification</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="menu-item">
                         <div class="menu-content pt-8 pb-2">
                             <span class="menu-section text-muted text-uppercase fs-8 ls-1" style="margin-left: -12px">
@@ -322,6 +354,8 @@
                             <span class="menu-title ml-5" style="margin-left: 17px;">Sales Inquiry</span>
                         </a>
                     </div>
+
+
 
 {{--                    --}}{{-- Start Our Partners Dropdown --}}
 {{--                    <span class="menu-link">--}}

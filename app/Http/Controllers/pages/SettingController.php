@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -52,21 +53,7 @@ class SettingController extends Controller
             $footer_image = $setting->header_image;
         }
 
-        $array_of_images = $setting->certifications;
         $image_path = null;
-
-        if($request->hasFile('certifications')) {
-            $files = $request->file('certifications');
-            foreach ($files as $file) {
-                $image_path = $file->store('/setting', [
-                    'disk' => 'public',
-                ]);
-
-                $new_image = array_push($array_of_images, $image_path);
-            }
-        }else{
-            $image_path = null;
-        }
 
 
         $setting->update([
@@ -78,8 +65,10 @@ class SettingController extends Controller
             'footer_description' => $request->footer_description,
             'header_image' => $header_image,
             'footer_image' => $footer_image,
-            'certifications' => $array_of_images,
         ]);
+
+        toastr()->success('Successfully Updated');
+
         return redirect()->back();
     }
 }
