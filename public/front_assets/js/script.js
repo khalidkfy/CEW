@@ -69,11 +69,15 @@ const swiper_service = new Swiper('.services .swiper', {
 });
 
 const certifications = new Swiper('.certifications .swiper', {
-    loop: true,
+    // loop: true,
 
     autoplay: {
         delay: 5000,
     },
+
+    slidesPerView: 1,
+    spaceBetween: 10,
+
     breakpoints: {
         // when window width is >= 320px
         320: {
@@ -99,7 +103,7 @@ const certifications = new Swiper('.certifications .swiper', {
 
 
 const swiper_product = new Swiper('.products .swiper', {
-    loop: true,
+    // loop: true,
     autoplay: {
         delay: 5000,
     },
@@ -107,6 +111,10 @@ const swiper_product = new Swiper('.products .swiper', {
         nextEl: '.products .swiper-button-next',
         prevEl: '.products .swiper-button-prev',
     },
+
+    slidesPerView: 1,
+    spaceBetween: 10,
+
     breakpoints: {
         // when window width is >= 320px
         320: {
@@ -115,7 +123,7 @@ const swiper_product = new Swiper('.products .swiper', {
         },
         // when window width is >= 480px
         480: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 30
         },
         // when window width is >= 640px
@@ -131,10 +139,13 @@ const swiper_product = new Swiper('.products .swiper', {
 });
 
 const swiper_testimonials = new Swiper('.testimonials .swiper', {
-    loop: true,
+    // loop: true,
     autoplay: {
         delay: 5000,
     },
+    slidesPerView: 1,
+    spaceBetween: 10,
+    
     navigation: {
         nextEl: '.services .swiper-button-next',
         prevEl: '.services .swiper-button-prev',

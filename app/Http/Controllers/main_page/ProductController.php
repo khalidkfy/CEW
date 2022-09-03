@@ -89,7 +89,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Product::query()->findOrFail($id);;
+        $product = Product::query()->findOrFail($id);
         $categories = Category::where('type', 'Category')->get();
         return view('pages.main_page.product.edit', compact('product', 'categories'));
     }

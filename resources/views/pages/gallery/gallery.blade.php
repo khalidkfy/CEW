@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-lg-7 d-none d-lg-block">
                         <figure>
-                            <img src="{{ $gallery->header_image }}"
+                            <img src="{{ asset('storage') . '/' . $gallery->header_image }}"
                                 alt=""></figure>
                     </div>
                 </div>

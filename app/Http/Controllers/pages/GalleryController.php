@@ -140,6 +140,7 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($request);
         $gallery = gallery::query()->findOrFail($id);
 
         $array_of_images = $gallery->galleries;
@@ -162,7 +163,7 @@ class GalleryController extends Controller
 
         $cover_text = null;
 
-        $header_image =  $gallery->header_image;;
+        $header_image =  null;
 
         if ($request->hasFile('cover_text')) {
             $file = $request->file('cover_text');
@@ -177,12 +178,13 @@ class GalleryController extends Controller
         if ($request->hasFile('header_image')) {
             $file = $request->file('header_image');
 
-            $cover_text = $file->store('/gallery', [
+            $header_image = $file->store('/gallery', [
                 'disk' => 'public',
             ]);
         } else {
             $header_image =  $gallery->header_image;
         }
+
         $gallery->update([
             'title' => $request->title,
             'description' => $request->description,
