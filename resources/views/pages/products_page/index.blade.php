@@ -6,7 +6,7 @@
     <div id="main" class="products entry-content body-bg">
         <div class="p-3">
             <div class="image-head">
-                <img src="{{ asset('storage') . '/' . 'product_page/product_page.png' }}" alt="">
+                <img src="{{ asset('front_assets/images/product-page.png') }}" alt="">
             </div>
         </div>
         <div class="container">
