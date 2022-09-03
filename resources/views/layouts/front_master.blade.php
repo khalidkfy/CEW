@@ -99,10 +99,15 @@
                                 {{ $setting->footer_description }}
                             </p>
                             <div class="d-flex images">
+                                @php
+                                    $limit = 0;
+                                @endphp
                                 @foreach ($setting->certifications as $cert)
+                                    <?php if($limit == 3) break; ?>
                                     <a href="">
                                         <img src="{{ asset('storage') . '/' . $cert }}" alt="">
                                     </a>
+                                    <?php $limit++; ?>
                                 @endforeach
                             </div>
                         </div>
@@ -156,7 +161,7 @@
             <div class="container">
                 <div class="text-center">
                     <p class="mb-0">EdPal ® All Rights are Reserved 2022 | Developed & Design with love By <img
-                            src="{{ asset('front_assets/images/assets/images/TS2G-logo.png') }}" alt=""></p>
+                            src="{{ asset('front_assets/images/TS2G-logo.png') }}" alt=""></p>
                 </div>
             </div>
         </div>
