@@ -47,12 +47,11 @@ class ServiceController extends Controller
             's_button_text' => ['required'],
             'icon' => ['nullable', 'image'],
             'header_image' => ['nullable', 'image'],
-            'image' => ['nullable', 'image'],
         ]);
 
         $icon = null;
         $header_image = null;
-        $image = null;
+
 
         if ($request->hasFile('icon')) {
             $file = $request->file('icon');
@@ -74,16 +73,6 @@ class ServiceController extends Controller
             $header_image = null;
         }
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-
-            $image = $file->store('services/image', [
-                'disk' => 'public'
-            ]);
-        }else {
-            $image = null;
-        }
-
         Service::create([
             'service_name' => $request->service_name,
             'short_description' => $request->short_description,
@@ -95,7 +84,6 @@ class ServiceController extends Controller
             's_button_text' => $request->s_button_text,
             'icon' => $icon,
             'header_image' => $header_image,
-            'image' => $image,
         ]);
 
         toastr()->success('Successfully Create');
@@ -145,12 +133,10 @@ class ServiceController extends Controller
             's_button_text' => ['required'],
             'icon' => ['nullable', 'image'],
             'header_image' => ['nullable', 'image'],
-            'image' => ['nullable', 'image'],
         ]);
 
         $icon = null;
         $header_image = null;
-        $image = null;
 
         if ($request->hasFile('icon')) {
             $file = $request->file('icon');
@@ -172,15 +158,6 @@ class ServiceController extends Controller
             $header_image = $service->header_image;
         }
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-
-            $image = $file->store('services/image', [
-                'disk' => 'public'
-            ]);
-        }else {
-            $image = $service->image;
-        }
 
         $service->update([
             'service_name' => $request->service_name,
@@ -193,7 +170,6 @@ class ServiceController extends Controller
             's_button_text' => $request->s_button_text,
             'icon' => $icon,
             'header_image' => $header_image,
-            'image' => $image,
         ]);
 
         toastr()->success('Successfully Updated');

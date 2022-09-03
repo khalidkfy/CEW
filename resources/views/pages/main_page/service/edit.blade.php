@@ -262,64 +262,6 @@
                     </div>
                     <!--end::Header Image-->
 
-                    <!--begin::Image-->
-                    <div class="col-md-4 mb-10">
-                        <label class="col-md-12 form-check-label mb-5" style="font-weight: 500; color: #3f4254; font-size: 1.05rem">
-                            Image
-                        </label>
-                        <div class="image-input image-input-empty" data-kt-image-input="true"
-                             style="width: 250px; background-image: url({{ $service->image }})">
-                            <!--begin::Image preview wrapper-->
-                            <div class="image-input-wrapper w-160px h-125px" style="width: 250px; background-image: url({{ asset('storage') . '/' . $service->image }}"></div>
-                            <!--end::Image preview wrapper-->
-
-                            <!--begin::Edit button-->
-                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                   data-kt-image-input-action="change"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-dismiss="click"
-                                   title="Change avatar">
-                                <i class="bi bi-pencil-fill fs-7"></i>
-
-                                <!--begin::Inputs-->
-                                <input type="file" class="@error('image') is-invalid @enderror" name="image" accept=".png, .jpg, .jpeg .svg"/>
-                                @error('image')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
-                                @enderror
-
-                                <input type="hidden" name="avatar_remove"/>
-                                <!--end::Inputs-->
-                            </label>
-                            <!--end::Edit button-->
-
-                            <!--begin::Cancel button-->
-                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="cancel"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Cancel avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
-                            <!--end::Cancel button-->
-
-                            <!--begin::Remove button-->
-                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="remove"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Remove avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
-                            <!--end::Remove button-->
-                        </div>
-                    </div>
-                    <!--end::Image-->
-                </div>
-
-
-
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save
