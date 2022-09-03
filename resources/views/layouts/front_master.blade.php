@@ -120,7 +120,7 @@
                                 </li>
                                 <li><a href="{{ route('gallery.gallery') }}">Gallery</a></li>
                                 <li><a href="{{ route('about.index') }}">About us</a></li>
-                                <li><a href="{{ route('client.index') }}">Partners</a></li>
+                                <li><a href="{{ route('client.index') }}">Clients</a></li>
                             </ul>
                         </div>
                     </div>

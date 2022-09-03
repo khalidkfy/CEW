@@ -61,12 +61,16 @@
                                 </span>
                             </a>
 
-                            <a href="{{ route('testimonial.edit', ['id' => $testimonial->id]) }}" class="btn btn-danger" style="width: 110px;">
-                                <i class="fa-solid fa-trash"></i>
-                                <span>
-                                    Delete
-                                </span>
-                            </a>
+                            <form action="{{ route('testimonial.delete', ['id' => $testimonial->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="width: 110px;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>
+                                        Delete
+                                    </span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

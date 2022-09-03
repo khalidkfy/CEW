@@ -41,7 +41,7 @@
                                 {{ $service->service_name }}
                             </h2>
                             <p>
-                                {{ $service->short_description }}
+                                {{ Str::limit($service->short_description, 60) }}
                             </p>
                             <a class="btn btn-outline-primary" href="{{ route('service.show', ['id' => $service->id]) }}">Read more</a>
                         </div>

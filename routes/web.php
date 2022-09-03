@@ -197,6 +197,7 @@ Route::namespace('/Testimonial')
             Route::post('/', [TestimonialController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [TestimonialController::class, 'edit'])->name('edit');
             Route::put('/{id}', [TestimonialController::class, 'update'])->name('update');
+            Route::delete('/{id}', [TestimonialController::class, 'destroy'])->name('delete');
         });
     });
 // End who_are_we Controller
@@ -227,6 +228,7 @@ Route::namespace('/pages')
             Route::post('/', [CertificationsController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [CertificationsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [CertificationsController::class, 'update'])->name('update');
+            Route::delete('/{id}', [CertificationsController::class, 'destroy'])->name('delete');
         });
     });
 // End services_page Controller

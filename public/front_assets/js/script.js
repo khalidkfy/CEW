@@ -1,5 +1,5 @@
 const swiper = new Swiper('.partners .swiper', {
-    loop: true,
+    // loop: true,
 
     navigation: {
         nextEl: '.partners .swiper-button-next',
@@ -8,6 +8,10 @@ const swiper = new Swiper('.partners .swiper', {
     autoplay: {
         delay: 5000,
     },
+
+    slidesPerView: 1,
+    spaceBetween: 10,
+
     breakpoints: {
         // when window width is >= 320px
         320: {
@@ -16,7 +20,7 @@ const swiper = new Swiper('.partners .swiper', {
         },
         // when window width is >= 480px
         480: {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 30
         },
         // when window width is >= 640px
@@ -27,7 +31,7 @@ const swiper = new Swiper('.partners .swiper', {
     },
 });
 const swiper_service = new Swiper('.services .swiper', {
-    loop: true,
+    // loop: true,
 
     navigation: {
         nextEl: '.services .swiper-button-next',
@@ -36,6 +40,11 @@ const swiper_service = new Swiper('.services .swiper', {
     autoplay: {
         delay: 5000,
     },
+
+    slidesPerView: 1,
+    spaceBetween: 10,
+
+
     breakpoints: {
         // when window width is >= 320px
         320: {

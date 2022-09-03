@@ -51,9 +51,9 @@
                     <div>
                         <div class="d-flex align-items-center justify-content-between">
                             <p class="mb-0">
-                                {{ $our_partner->text }}
+                                {{ Str::limit($our_partner->text, 70) }}
                             </p>
-                            <a href="">
+                            <a href="{{ route('client.index') }}" class="@if($our_partner->link_active == 0) disabled-link @endif">
                                 {{ $our_partner->link_text }}
                             </a>
                         </div>

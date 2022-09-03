@@ -87,4 +87,15 @@ class CertificationsController extends Controller
 
         return redirect()->route('certification.index');
     }
+
+    public function destroy($id)
+    {
+        $certification = Certification::query()->findOrFail($id);
+
+        $certification->delete();
+
+        toastr()->success('Successfully Deleted');
+
+        return redirect()->back();
+    }
 }
