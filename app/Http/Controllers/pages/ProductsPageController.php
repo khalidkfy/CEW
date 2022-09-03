@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductPage;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsPageController extends Controller
 {
@@ -34,6 +35,7 @@ class ProductsPageController extends Controller
 
     public function update(Request $request, $id)
     {
+//        dd($request);
         $product = ProductPage::query()->findOrFail($id);
 
         $image = null;

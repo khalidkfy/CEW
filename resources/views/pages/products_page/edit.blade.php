@@ -31,60 +31,10 @@
                 @csrf
                 @method('PUT')
 
-                <!--begin::Image input-->
-                    <div class="row mb-10">
-                        <label class="col-md-12 form-check-label mb-5" style="font-weight: 500; color: #3f4254; font-size: 1.05rem">
-                            Box Header Image
-                        </label>
-                        <div class="image-input image-input-empty" data-kt-image-input="true"
-                             style="width: 250px">
-                            <!--begin::Image preview wrapper-->
-                            <div class="image-input-wrapper w-160px h-125px" style="width: 250px;"></div>
-                            <!--end::Image preview wrapper-->
-
-                            <!--begin::Edit button-->
-                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                   data-kt-image-input-action="change"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-dismiss="click"
-                                   title="Change avatar">
-                                <i class="bi bi-pencil-fill fs-7"></i>
-
-                                <!--begin::Inputs-->
-                                <input type="file" class="@error('image') is-invalid @enderror" name="image" accept=".png, .jpg, .jpeg"/>
-                                @error('image')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
-                                @enderror
-
-                                <input type="hidden" name="image"/>
-                                <!--end::Inputs-->
-                            </label>
-                            <!--end::Edit button-->
-
-                            <!--begin::Cancel button-->
-                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="cancel"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Cancel avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
-                            <!--end::Cancel button-->
-
-                            <!--begin::Remove button-->
-                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="remove"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Remove avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
-                            <!--end::Remove button-->
-                        </div>
-                    </div>
-                    <!--end::Image input-->
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                    <input type="file" class="form-control" name="image" id="inputGroupFile01">
+                </div>
 
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">

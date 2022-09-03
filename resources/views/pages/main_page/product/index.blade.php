@@ -54,7 +54,11 @@
                                 {{ $product->product_name }}
                             </td>
                             <td>
-                                {{ $product->category->category_name }}
+                                @if($product->category)
+                                    {{ $product->category->category_name }}
+                                @else
+                                    {{ 'No Category' }}
+                                @endif
                             </td>
                             <td>
                                 {{ $product->price }}
