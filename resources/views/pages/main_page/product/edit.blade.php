@@ -203,7 +203,7 @@
                 var category_id = $(this).val();
 
                 $.ajax({
-                    url: '/cec/public/products/sub_category',
+                    url: '/ces/public/products/sub_category',
                     type: 'get',
                     data: {
                         category_id: category_id,
