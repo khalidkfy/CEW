@@ -233,20 +233,20 @@ Route::namespace('/pages')
     });
 // End services_page Controller
 
-//// Start products_page Controller
-//Route::namespace('/pages')
-//    ->middleware(['auth'])
-//    ->group(function () {
-//        Route::group([
-//            'prefix' => ('/products_page'),
-//            'as' => 'products_page.',
-//        ], function () {
-//            Route::get('/', [ProductsPageController::class, 'index'])->name('index')->withoutMiddleware('auth');
+// Start products_page Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/products_page'),
+            'as' => 'products_page.',
+        ], function () {
+            Route::get('/', [ProductsPageController::class, 'index'])->name('index')->withoutMiddleware('auth');
 //            Route::get('/{id}/edit', [ProductsPageController::class, 'edit'])->name('edit');
 //            Route::put('/{id}', [ProductsPageController::class, 'update'])->name('update');
-//        });
-//    });
-//// End products_page Controller
+        });
+    });
+// End products_page Controller
 
 // Start About Us Controller
 Route::namespace('/pages')
