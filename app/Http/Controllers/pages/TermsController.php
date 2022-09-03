@@ -120,6 +120,12 @@ class TermsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $term = Term::query()->findOrFail($id);
+
+        $term->delete();
+
+        toastr()->success('Successfully Deleted');
+
+        return redirect()->back();
     }
 }

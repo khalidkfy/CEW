@@ -51,13 +51,24 @@
                             {{ $term->description }}
                         </td>
 
-                        <td class="text-end">
-                            <a href="{{ route('term.edit', ['id' => $term->id]) }}" class="btn btn-primary" style="width: 90px;">
+                        <td class="text-end d-flex justify-content-center">
+                            <a href="{{ route('term.edit', ['id' => $term->id]) }}" class="btn btn-primary mx-3" style="width: 90px;">
                                 <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                                 <span>
                                     Edit
                                 </span>
                             </a>
+
+                            <form action="{{ route('term.delete', ['id' => $term->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" style="display: inline-flex;">
+                                    <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
+                                    <span>
+                                        Delete
+                                    </span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

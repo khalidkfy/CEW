@@ -277,6 +277,7 @@ Route::namespace('/pages')
             Route::post('/', [FaqsController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [FaqsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [FaqsController::class, 'update'])->name('update');
+            Route::delete('/{id}', [FaqsController::class, 'destroy'])->name('delete');
         });
     });
 // End About Us Controller
@@ -295,6 +296,7 @@ Route::namespace('/pages')
             Route::post('/', [TermsController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [TermsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [TermsController::class, 'update'])->name('update');
+            Route::delete('/{id}', [TermsController::class, 'destroy'])->name('delete');
         });
     });
 // End About Us Controller
@@ -313,6 +315,7 @@ Route::namespace('/pages')
             Route::post('/', [PrivacyController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [PrivacyController::class, 'edit'])->name('edit');
             Route::put('/{id}', [PrivacyController::class, 'update'])->name('update');
+            Route::delete('/{id}', [PrivacyController::class, 'destroy'])->name('delete');
         });
     });
 // End About Us Controller

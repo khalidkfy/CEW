@@ -71,4 +71,17 @@ class FaqsController extends Controller
 
         return redirect()->route('faqs.index');
     }
+
+    public function destroy($id)
+    {
+        $faq = Faqs::query()->findOrFail($id);
+
+        $faq->delete();
+
+        toastr()->success('Successfully Deleted');
+
+        return redirect()->back();
+
+    }
+
 }

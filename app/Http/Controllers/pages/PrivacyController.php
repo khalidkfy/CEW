@@ -118,6 +118,12 @@ class PrivacyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $privacy = Privacy::query()->findOrFail($id);
+
+        $privacy->delete();
+
+        toastr()->success('Successfully Deleted');
+
+        return redirect()->back();
     }
 }
