@@ -35,7 +35,7 @@
                 <thead>
                 <!--begin::Table row-->
                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase">
-                    <th class="min-w-100px">Page Title</th>
+
                     <th class="min-w-100px">Title</th>
                     <th class="min-w-100px">Description</th>
                     <th class="text-end min-w-100px pe-5">Operations</th>
@@ -45,9 +45,7 @@
                 <tbody class="fw-bold text-gray-600">
                     @foreach($faqs as $faq)
                         <tr class="odd">
-                            <td>
-                                {{ $faq->page_title }}
-                            </td>
+
                             <td>
                                 {{ $faq->title }}
                             </td>

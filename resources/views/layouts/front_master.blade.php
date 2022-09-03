@@ -60,7 +60,11 @@
                                     <li><a href="{{ route('products_page.index') }}">Product</a></li>
                                     <li><a href="{{ route('gallery.gallery') }}">Gallery</a></li>
                                     <li><a href="{{ route('about.index') }}">About us</a></li>
-                                    <li><a href="">Client</a></li>
+                                    <li>
+                                        <a href="{{ route('client.index') }}" class="d-block">
+                                            Client
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -82,9 +86,10 @@
         <div class="top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="item-footer mb-3 mb-md-0">
-                            <figure><img src="{{ asset('storage') . '/' . $setting->footer_image }}" alt="">
+                            <figure>
+                                <img src="{{ asset('storage') . '/' . $setting->footer_image }}" alt="">
                             </figure>
                             <p>
                                 {{ $setting->footer_description }}
@@ -98,8 +103,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="item-footer mb-3 mb-md-0">
+                    <div class="col-md-3">
+                        <div class="item-footer Usful-link mb-3 mb-md-0">
                             <h2 class="title-footer">Usful link</h2>
                             <ul>
                                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -115,19 +120,19 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="item-footer mb-3 mb-md-0">
                             <h2 class="title-footer">Resources</h2>
                             <ul>
-                                <li><a href="">Contact us</a></li>
+                                <li><a href="{{ route('contact_us.contact') }}">Contact us</a></li>
                                 <li><a href="{{ route('term.terms') }}">Terms & Conditions</a></li>
                                 <li><a href="{{ route('privacy.privacy') }}">Privacy Policy</a></li>
                                 <li><a href="{{ route('faqs.faqs') }}">FAQs</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="item-footer mb-3 mb-md-0">
+                    <div class="col-md-2">
+                        <div class="item-footer mb-3 mb-md-0 contact">
                             <h2 class="title-footer">Contact</h2>
                             <ul>
                                 <li><span class="mobile"></span> {{ $setting->phone_number }}</li>

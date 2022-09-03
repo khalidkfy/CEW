@@ -74,7 +74,6 @@
 @section('js')
 
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 
     <script>
         ClassicEditor

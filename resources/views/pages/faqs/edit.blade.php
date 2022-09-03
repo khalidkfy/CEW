@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('page_title', 'About Us Edit')
+@section('page_title', 'FAQs Edit')
 
 @section('css')
 @endsection
 
-@section('nav_title', 'About Us Edit')
+@section('nav_title', 'FAQs Edit')
 
 @section('content')
     <div class="card card-p-0 card-flush">
@@ -14,7 +14,7 @@
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <h4>
-                        About Us Edit
+                        FAQs Edit
                     </h4>
                 </div>
                 <!--end::Search-->
@@ -29,19 +29,6 @@
             <form action="{{ route('faqs.update', ['id' => $faq->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
-                {{-- Start Title --}}
-                <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Certification Title</label>
-                    <input type="text" name="page_title" class="form-control @error('page_title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
-                           value="{{ $faq->page_title }}"/>
-                    @error('page_title')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End Title --}}
 
                 {{-- Start Title --}}
                 <div class="mb-10">
@@ -89,5 +76,14 @@
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
 
 
-
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#kt_docs_ckeditor_classic'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection

@@ -32,13 +32,11 @@ class FaqsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'page_title' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
         ]);
 
         Faqs::create([
-            'page_title' => $request->page_title,
             'title' => $request->title,
             'description' => $request->description,
         ]);
@@ -60,13 +58,11 @@ class FaqsController extends Controller
         $faq = Faqs::query()->findOrFail($id);
 
         $request->validate([
-            'page_title' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
         ]);
 
         $faq->update([
-            'page_title' => $request->page_title,
             'title' => $request->title,
             'description' => $request->description,
         ]);

@@ -31,19 +31,6 @@
 
                 {{-- Start Title --}}
                 <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Page Title</label>
-                    <input type="text" name="page_title" class="form-control @error('page_title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
-                           "/>
-                    @error('page_title')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End Title --}}
-
-                {{-- Start Title --}}
-                <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Title</label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
                            "/>
@@ -88,5 +75,14 @@
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
 
 
-
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#kt_docs_ckeditor_classic'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+        });
+    </script>
 @endsection

@@ -21,6 +21,7 @@ use App\Http\Controllers\pages\SalesController;
 use App\Http\Controllers\pages\ServicesPageController;
 use App\Http\Controllers\pages\SettingController;
 use App\Http\Controllers\pages\TermsController;
+use App\Http\Controllers\setting\AccountSettingsController;
 use App\Models\MPBoxHeader;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,20 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+// Start Account Setting
+Route::namespace('/box_header')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/account_setting'),
+            'as' => 'account_setting.',
+        ], function () {
+            Route::get('/{id}/edit', [AccountSettingsController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [AccountSettingsController::class, 'update'])->name('update');
+        });
+    });
+// End Account Setting
 
 // Start box_header Controller
 Route::namespace('/box_header')

@@ -4,8 +4,6 @@
 
 @section('css')
 
-    {{--    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" />--}}
-    {{--    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />--}}
 @endsection
 
 @section('nav_title', 'Dashboard')
@@ -243,8 +241,7 @@
 @section('js')
     <script>var hostUrl = "assets/";</script>
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>

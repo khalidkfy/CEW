@@ -112,7 +112,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
                                      data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                      data-kt-menu-placement="bottom-end">
-                                    <img src="{{ asset('assets/media/avatars/300-1.jpg') }}" alt="user"/>
+                                    <img src="{{ auth()->user()->image }}" alt="user"/>
                                 </div>
                                 <!--begin::User account menu-->
                                 <div
@@ -123,7 +123,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="menu-content d-flex align-items-center px-3">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="{{ asset('assets/media/avatars/300-1.jpg') }}"/>
+                                                <img alt="Logo" src="{{ auth()->user()->image }}"/>
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Username-->
@@ -139,6 +139,13 @@ License: For each use you must have a valid license purchased only from above li
                                         </div>
                                     </div>
                                     <!--end::Menu item-->
+                                    <!--begin::Menu separator-->
+                                    <div class="separator my-2"></div>
+                                    <!--end::Menu separator-->
+
+                                    <div class="menu-item px-5">
+                                        <a href="{{ route('account_setting.edit', ['id' => auth()->user()->id]) }}" class="menu-link px-5">Account Setting</a>
+                                    </div>
 
                                     <!--begin::Menu separator-->
                                     <div class="separator my-2"></div>
@@ -149,10 +156,6 @@ License: For each use you must have a valid license purchased only from above li
                                         <a href="#" class="menu-link px-5">Sign Out</a>
                                     </div>
                                     <!--end::Menu item-->
-
-                                    <!--begin::Menu separator-->
-                                    <div class="separator my-2"></div>
-                                    <!--end::Menu separator-->
 
                                 </div>
                                 <!--end::User account menu-->
