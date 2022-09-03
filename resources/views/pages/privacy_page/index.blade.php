@@ -50,7 +50,7 @@
                         <td>
                             {{ $privacy->description }}
                         </td>
-                        
+
                         <td class="text-end d-flex justify-content-center">
                             <a href="{{ route('privacy.edit', ['id' => $privacy->id]) }}" class="btn btn-primary mx-3" style="width: 90px;">
                                 <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
