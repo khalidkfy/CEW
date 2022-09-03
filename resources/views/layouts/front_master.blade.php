@@ -48,7 +48,7 @@
                                 <div class="mobile_menu_icon">
                                     <div class="mobile_menu_toggle"></div>
                                 </div>
-                                <a href="" class="logo"><img
+                                <a href="{{ route('home') }}" class="logo"><img
                                         src="{{ asset('storage') . '/' . $setting->header_image }}" alt=""></a>
                                 <ul id="primary-menu" class="menu">
                                     <li>
