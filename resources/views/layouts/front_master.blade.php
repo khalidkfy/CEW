@@ -51,17 +51,21 @@
                                 <a href="" class="logo"><img
                                         src="{{ asset('storage') . '/' . $setting->header_image }}" alt=""></a>
                                 <ul id="primary-menu" class="menu">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
                                     <li>
-                                        <a href="{{ route('services_page.index') }}">
+                                        <a href="{{ route('home') }}" class="@if(Request::is('/')) active-link @endif">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('services_page.index') }}" class="@if(Request::is('services_page')) active-link @endif">
                                             Services
                                         </a>
                                     </li>
-                                    <li><a href="{{ route('products_page.index') }}">Product</a></li>
-                                    <li><a href="{{ route('gallery.gallery') }}">Gallery</a></li>
-                                    <li><a href="{{ route('about.index') }}">About us</a></li>
+                                    <li><a href="{{ route('products_page.index') }}" class="@if(Request::is('products_page')) active-link @endif">Product</a></li>
+                                    <li><a href="{{ route('gallery.gallery') }}" class="@if(Request::is('gallery')) active-link @endif">Gallery</a></li>
+                                    <li><a href="{{ route('about.index') }}" class="@if(Request::is('about')) active-link @endif">About us</a></li>
                                     <li>
-                                        <a href="{{ route('client.index') }}" class="d-block">
+                                        <a href="{{ route('client.index') }}" class="d-block @if(Request::is('client')) active-link @endif">
                                             Client
                                         </a>
                                     </li>

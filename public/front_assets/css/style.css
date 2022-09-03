@@ -149,6 +149,12 @@ header nav .left #primary-menu>li>a.active {
     background: rgba(50, 45, 122, 0.05);
 }
 
+.active-link {
+    color: var(--color01) !important;
+    font-weight: 600;
+    background: rgba(50, 45, 122, 0.05);
+}
+
 header .link .btn {
     min-width: 116px;
     height: 40px;
@@ -165,6 +171,12 @@ header .link .btn {
 .btn-outline-primary {
     border-color: var(--color01);
     color: var(--color01);
+}
+
+.btn-outline-primary:hover {
+    border-color: var(--color01);
+    color: #FFFFFF;
+    background-color: var(--color01);
 }
 
 .btn-primary {
