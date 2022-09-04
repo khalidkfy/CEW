@@ -16,11 +16,12 @@ class ServicesPageController extends Controller
         $services_page = ServicesPage::query()->first();
 
         $services = Service::query()->limit(8)->get();
+        $services_certifications = Certification::query()->where('type', 'Services')->get();
 
-        $certifications = Certification::query()->where('type', 'Services')->get();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
         $setting = Setting::query()->first();
 
-        return view('pages.services_page.index', compact('services_page','services', 'certifications', 'setting'));
+        return view('pages.services_page.index', compact('services_page','services', 'certifications', 'services_certifications','setting'));
     }
 
     public function edit($id)

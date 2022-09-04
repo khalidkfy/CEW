@@ -56,7 +56,7 @@
             </div>
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    @foreach($certifications as $certification)
+                    @foreach($services_certifications as $certification)
                         <div class="swiper-slide">
                             <div class="item-sy1 mb-4">
                                 <figure>
