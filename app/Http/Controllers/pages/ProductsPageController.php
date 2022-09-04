@@ -21,7 +21,7 @@ class ProductsPageController extends Controller
 
         $categories = Category::whereNull('parent_id')->get();
         $setting = Setting::query()->first();
-        $certifications = Certification::query()->where('type', 'Services')->get();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
         return view('pages.products_page.index', compact('product_page', 'products', 'categories', 'setting', 'certifications'));
 

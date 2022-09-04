@@ -15,7 +15,7 @@ class GalleryController extends Controller
         $galleries = gallery::all();
         $gallery = gallery::query()->first();
         $setting = Setting::query()->first();
-        $certifications = Certification::query()->where('type', 'Services')->get();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
         return view('pages.gallery.gallery', compact('galleries', 'gallery', 'setting', 'certifications'));
     }
