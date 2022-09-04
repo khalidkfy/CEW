@@ -207,10 +207,6 @@ class CertificationsController extends Controller
 
     public function footerCertificationStore(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-        ]);
 
         $image = null;
 
@@ -225,8 +221,6 @@ class CertificationsController extends Controller
         }
 
         Certification::create([
-            'title' => $request->title,
-            'description' => $request->description,
             'image' => $image,
             'type' => 'Footer',
         ]);
@@ -245,11 +239,6 @@ class CertificationsController extends Controller
 
     public function footerUpdateCertification(Request $request, $id)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-        ]);
-
         $certification = Certification::query()->findOrFail($id);
 
         $image = null;
@@ -265,8 +254,6 @@ class CertificationsController extends Controller
         }
 
         $certification->update([
-            'title' => $request->title,
-            'description' => $request->description,
             'image' => $image,
         ]);
 

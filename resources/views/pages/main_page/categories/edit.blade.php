@@ -45,6 +45,11 @@
                 </div>
                 {{-- End category_name --}}
 
+                <div class="mb-5">
+                    <label for="formFile" class="form-label">Icon</label>
+                    <input class="form-control" name="icon" type="file" id="formFile">
+                </div>
+
                 {{-- Start Get All Sub Gategory --}}
                 @if($category->type == 'Category')
                     <label class="required form-label">

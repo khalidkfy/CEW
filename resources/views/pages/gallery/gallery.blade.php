@@ -38,7 +38,7 @@
                                     <a href="{{ route('gallery.show', ['id' => $gallery->id]) }}"><img src="{{ asset('storage') . '/' . $gallery->cover_text }}" alt=""></a>
                                 </figure>
                                 <a href="" class="title">
-                                    {{ $gallery->gallery_text }}
+                                    {{ $gallery->gallery_title }}
                                 </a>
                             </div>
                         </div>

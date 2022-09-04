@@ -146,7 +146,7 @@
                             <ul>
                                 <li><span class="mobile"></span> {{ $setting->phone_number }}</li>
                                 <li><span class="mobile"></span> {{ $setting->fax_address }}</li>
-                                <li><span class="mobile"></span> {{ $setting->email_address }}</li>
+                                <li><span class="email"></span> {{ $setting->email_address }}</li>
                             </ul>
                             <div class="d-flex socail">
                                 <a href="" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>

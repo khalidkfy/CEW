@@ -84,7 +84,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::query()->findOrFail($id);
-        $products = Product::where('category_id', $product->category_id)->get();
+        $products = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->get();
         $setting = Setting::query()->first();
         $certifications = Certification::query()->where('type', 'Footer')->get();
         return view('pages.main_page.product.show', compact('product', 'products', 'setting', 'certifications'));

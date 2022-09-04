@@ -30,33 +30,6 @@
             <form action="{{ route('certification.footerCertificationStore') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                {{-- Start Title --}}
-                <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Title</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
-                           "/>
-                    @error('title')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End category_name --}}
-
-                {{-- Start Description --}}
-                <div class="mb-10">
-                    <label for="kt_docs_ckeditor_classic" class="required form-label">Description</label>
-                    <textarea name="description" id="kt_docs_ckeditor_classic" class="@error('description') is-invalid @enderror">
-
-                    </textarea>
-                    @error('description')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End Sub_Title --}}
-
                 <div class="row mb-10">
                     <label class="col-md-12 form-check-label mb-5" style="font-weight: 500; color: #3f4254; font-size: 1.05rem">
                         Certification Image

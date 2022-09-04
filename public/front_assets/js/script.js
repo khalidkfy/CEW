@@ -103,7 +103,7 @@ const certifications = new Swiper('.certifications .swiper', {
 
 
 const swiper_product = new Swiper('.products .swiper', {
-    // loop: true,
+    loop: true,
     autoplay: {
         delay: 5000,
     },
@@ -145,7 +145,7 @@ const swiper_testimonials = new Swiper('.testimonials .swiper', {
     },
     slidesPerView: 1,
     spaceBetween: 10,
-    
+
     navigation: {
         nextEl: '.services .swiper-button-next',
         prevEl: '.services .swiper-button-prev',
@@ -175,18 +175,20 @@ icon.addEventListener('click', () => {
     overbg.classList.toggle('active');
 })
 
-overbg.addEventListener('click', () => {
+/*overbg.addEventListener('click', () => {
     icon_toggle.classList.remove('active');
     mobile_menu.classList.remove('active');
     overbg.classList.remove('active');
-})
+})*/
 
+/*
 close_menu.addEventListener('click', (e) => {
     icon_toggle.classList.remove('active');
     mobile_menu.classList.remove('active');
     overbg.classList.remove('active');
     e.preventDefault()
 })
+*/
 
 let h2footer = document.querySelectorAll('.title-footer');
 
@@ -209,11 +211,11 @@ link_item.forEach(item01 => {
 });
 
 const swiper1 = new Swiper(".mySwiper", {
-    loop: true,
+    loop: false,
     spaceBetween: 0,
     slidesPerView: 3,
-    freeMode: true,
-    watchSlidesProgress: true,
+    // freeMode: true,
+    // watchSlidesProgress: true,
     direction: 'vertical',
 });
 const swiper2 = new Swiper(".mySwiper2", {

@@ -1077,6 +1077,10 @@ footer .top .item-footer .socail>a.facebook:hover {
     object-fit: scale-down;
 }
 
+.v-slider-single {
+    height: 467px;
+}
+
 .single-product .swiper.mySwiper2 {
     width: 80%;
     flex: 0 0 auto;

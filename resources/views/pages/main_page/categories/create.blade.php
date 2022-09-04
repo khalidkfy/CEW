@@ -44,6 +44,11 @@
                 </div>
                 {{-- End category_name --}}
 
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Icon</label>
+                    <input class="form-control" name="icon" type="file" id="formFile">
+                </div>
+
                 <div class="col-md-6 mb-12">
                     <label class="required form-label">Type</label>
                     <select class="form-select col-md-6" aria-label="Select example" name="type">

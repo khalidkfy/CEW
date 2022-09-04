@@ -14,6 +14,8 @@ class Category extends Model
         'category_name',
         'parent_id',
         'type',
+        'color',
+        'icon',
     ];
 
     /**

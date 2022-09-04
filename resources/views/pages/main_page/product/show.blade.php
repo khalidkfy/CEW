@@ -10,7 +10,11 @@
                     <li class="breadcrumb-item"><a href="#">Products</a></li>
                     <li class="breadcrumb-item">
                         <a href="#">
-                            {{ $product->category->category_name }}
+                            @if($product->category)
+                                {{ $product->category->category_name }}
+                            @else
+                                {{ 'Unknown Category' }}
+                            @endif
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
@@ -35,7 +39,7 @@
                     <div class="d-flex gallery">
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
-                                @foreach ($product->images as $image)
+                                @foreach ( $product->images as $image )
                                     <div class="swiper-slide">
                                         <figure>
                                             <img src="{{ asset('storage') . '/' . $image }}" />
@@ -44,14 +48,14 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div thumbsSlider="" class="swiper mySwiper">
+                        <div thumbsSlider="" class="swiper mySwiper v-slider-single">
                             <div class="swiper-wrapper">
                                 @foreach ($product->images as $image)
-                                    <div class="swiper-slide">
+                                 <div class="swiper-slide">
                                         <figure>
                                             <img src="{{ asset('storage') . '/' . $image }}" />
                                         </figure>
-                                    </div>
+                                </div>
                                 @endforeach
                             </div>
                         </div>

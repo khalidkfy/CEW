@@ -41,9 +41,23 @@ class CategoryController extends Controller
             'category_name' => ['required'],
         ]);
 
+        $icon = null;
+
+        if($request->hasFile('icon')){
+            $file = $request->file('icon');
+
+            $icon = $file->store('/category/icon', [
+                'disk' => 'public'
+            ]);
+        }else{
+            $icon = null;
+        }
+
+
         Category::create([
             'category_name' => $request->category_name,
             'type' => $request->type,
+            'icon' => $icon,
         ]);
 
         toastr()->success('Category Successfully Created');
@@ -91,8 +105,21 @@ class CategoryController extends Controller
 
         $category = Category::query()->findOrFail($id);
 
+        $icon = null;
+
+        if($request->hasFile('icon')){
+            $file = $request->file('icon');
+
+            $icon = $file->store('/category/icon', [
+                'disk' => 'public'
+            ]);
+        }else{
+            $icon = $category->icon;
+        }
+
         $category->update([
             'category_name' => $request->category_name,
+            'icon' => $icon,
         ]);
 
         $set_to_null = Category::query()

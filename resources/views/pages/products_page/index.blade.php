@@ -17,6 +17,7 @@
                         <ul>
                             @foreach($categories as $category)
                                 <li class="drop-menu">
+{{--                                    <img src="{{ asset('storage') . '/' . $category->icon }}" height="30" width="30">--}}
                                     <a class="link-item" href="javascript:void(0)">
                                         {{ $category->category_name }}
                                     </a>
