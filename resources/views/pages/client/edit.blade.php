@@ -58,13 +58,6 @@
                 </div>
                 {{-- End long_description --}}
 
-                <div class="row">
-                    <div class="col-md-6 input-group mb-3">
-                        <label class="input-group-text" for="inputGroupFile01">Images</label>
-                        <input type="file" name="images[]" class="form-control" id="inputGroupFile01" multiple>
-                    </div>
-                </div>
-
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save

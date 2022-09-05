@@ -1,3 +1,4 @@
+
 const swiper = new Swiper('.partners .swiper', {
     // loop: true,
 

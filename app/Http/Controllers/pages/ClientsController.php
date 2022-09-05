@@ -41,7 +41,6 @@ class ClientsController extends Controller
 
         $array_of_images = $client->images;
 
-        $image_path = null;
 
         if ($request->hasFile('header_image')) {
             $file = $request->file('header_image');
@@ -52,24 +51,10 @@ class ClientsController extends Controller
             $header_image = $client->header_image;
         }
 
-        if ($request->hasFile('images')) {
-            $files = $request->file('images');
-
-            foreach ($files as $file) {
-                $image_path = $file->store('/client', [
-                    'disk' => 'public',
-                ]);
-
-                $new_image = array_push($array_of_images, $image_path);
-            }
-        } else {
-            $image_path = null;
-        }
 
         $client->update([
             'title' => $request->title,
             'header_image' => $header_image,
-            'images' => $array_of_images,
         ]);
 
         toastr()->success('Successfully Updated');

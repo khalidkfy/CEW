@@ -61,7 +61,7 @@
                     </td>
 
                     <td class="text-end pe-0">
-                        <img src="{{ asset('front_assets') . '/' . $service->icon }}" width="50" height="50">
+                        <img src="{{ asset('storage') . '/' . $service->icon }}" width="50" height="50">
                     </td>
                     <td class="text-end d-flex justify-content-center">
                         <a href="{{ route('service.edit', ['id' => $service->id]) }}" class="btn btn-primary" style="width: 90px; margin-right: 10px">

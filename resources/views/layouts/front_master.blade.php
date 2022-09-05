@@ -160,7 +160,7 @@
         <div class="bottom">
             <div class="container">
                 <div class="text-center">
-                    <p class="mb-0">EdPal ® All Rights are Reserved 2022 | Developed & Design with love By <img
+                    <p class="mb-0">CEW ® All Rights are Reserved 2022 | Developed & Design with love By <img
                             src="{{ asset('front_assets/images/TS2G-logo.png') }}" alt=""></p>
                 </div>
             </div>
@@ -172,5 +172,5 @@
     <script src="{{ asset('front_assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('front_assets/js/script.js') }}"></script>
 </body>
-
+@stack('js')
 </html>

@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('type', 'Category')->get();
         return view('pages.main_page.product.create', compact('categories'));
     }
 

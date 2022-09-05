@@ -41,7 +41,7 @@
                          style="width: 250px; background-image: url({{ $certification->image }})">
                         <!--begin::Image preview wrapper-->
                         <div class="image-input-wrapper w-160px h-125px"
-                             style="width: 250px; background-image: url({{ asset('storage') . 'edit.blade.php/' . $certification->image }})"></div>
+                             style="width: 250px; background-image: url({{ asset('storage') . '/' . $certification->image }})"></div>
                         <!--end::Image preview wrapper-->
 
                         <!--begin::Edit button-->

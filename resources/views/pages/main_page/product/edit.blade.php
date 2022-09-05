@@ -105,7 +105,9 @@
                     <div class="col-md-6">
                         <label class="required form-label">Sub Category</label>
                         <select class="form-select" aria-label="Select example" name="sub_category_id" id="product_category">
-
+                            <option>
+                                {{ $product->subCategory->category_name }}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -119,7 +121,7 @@
                         <div class="image-input image-input-empty" data-kt-image-input="true"
                              style="width: 250px; background-image: url({{ $product->cover_image }})">
                             <!--begin::Image preview wrapper-->
-                            <div class="image-input-wrapper w-160px h-125px" style="width: 250px; background-image: url({{ $product->cover_image }})"></div>
+                            <div class="image-input-wrapper w-160px h-125px" style="width: 250px; background-image: url({{ asset('storage') . '/' . $product->cover_image }})"></div>
                             <!--end::Image preview wrapper-->
 
                             <!--begin::Edit button-->

@@ -17,14 +17,13 @@
                         <ul>
                             @foreach($categories as $category)
                                 <li class="drop-menu">
-{{--                                    <img src="{{ asset('storage') . '/' . $category->icon }}" height="30" width="30">--}}
-                                    <a class="link-item" href="javascript:void(0)">
+                                    <a class="link-item" data-value="{{ $category->id }}">
                                         {{ $category->category_name }}
                                     </a>
                                     <ul class="sub-menu">
                                         @foreach($category->children as $children)
                                             <li>
-                                                <a href="">
+                                                <a href="javascript:;" onclick="getProductsByCategoryId({{$children->id}})">
                                                     {{ $children->category_name }}
                                                 </a>
                                             </li>
@@ -32,9 +31,6 @@
                                     </ul>
                                 </li>
                             @endforeach
-{{--                            @foreach($categories as $category)--}}
-{{--                                <li><a href="">{{ $category->category_name }}</a></li>--}}
-{{--                            @endforeach--}}
 
                         </ul>
                     </div>
@@ -68,3 +64,28 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{ asset('front_assets/jquery.js') }}"></script>
+    <script>
+
+        function getProductsByCategoryId(cateId) {
+            $.ajax({
+                url: "{{ route('') }}",
+                method : 'POST',
+                dataType:"json",
+                data : {
+                    cateId : cateId,
+                },
+                success: function (res) {
+                    alert(res)
+
+                },
+                error :function(error) {
+                    alert(error);
+                }
+            })
+
+        }
+    </script>
+
+@endpush

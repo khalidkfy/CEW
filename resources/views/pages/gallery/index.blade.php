@@ -55,13 +55,24 @@
                             {{ Str::limit($gallery->gallery_title, 30) }}
                         </td>
 
-                        <td class="text-end">
-                            <a href="{{ route('gallery.edit', ['id' => $gallery->id]) }}" class="btn btn-primary" style="width: 90px;">
+                        <td class="text-end d-flex">
+                            <a href="{{ route('gallery.edit', ['id' => $gallery->id]) }}" class="btn btn-primary" style="width: 90px; margin-right: 5px">
                                 <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                                 <span>
                                     Edit
                                 </span>
                             </a>
+
+                            <form action="{{ route('gallery.delete', ['id' => $gallery->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="width: 110px;">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <span>
+                                        Delete
+                                    </span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

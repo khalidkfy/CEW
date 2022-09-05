@@ -210,6 +210,12 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = gallery::query()->findOrFail($id);
+
+        $gallery->delete();
+
+        toastr()->success('Successfully Deleted');
+
+        return redirect()->route('gallery.index');
     }
 }

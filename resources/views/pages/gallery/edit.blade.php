@@ -104,48 +104,14 @@
     <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#MPheader_button_action').change(function () {
-                if ($(this).val() == 1) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-
-                } else if ($(this).val() == 0) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data: {
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function (data) {
-                            console.log(data.action)
-                        },
-                        error: function (data) {
-                            console.log(data)
-                        },
-                    })
-                }
-                ;
+        ClassicEditor
+            .create(document.querySelector('#kt_docs_ckeditor_classic'))
+            .then(editor => {
+                console.log(editor);
             })
-        })
-
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 
 @endsection

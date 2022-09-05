@@ -353,6 +353,7 @@ Route::namespace('/pages')
             Route::get('/{id}', [GalleryController::class, 'show'])->name('show')->withoutMiddleware(['auth']);
             Route::get('/{id}/edit', [GalleryController::class, 'edit'])->name('edit');
             Route::put('/{id}', [GalleryController::class, 'update'])->name('update');
+            Route::delete('/{id}', [GalleryController::class, 'destroy'])->name('delete');
         });
     });
 // End About Us Controller
@@ -387,7 +388,7 @@ Route::namespace('/pages')
             // Slider Image
             Route::get('/client/slider', [ClientsController::class, 'SliderImage'])->name('SliderImage');
             Route::post('/client/slider', [ClientsController::class, 'SliderImageStore'])->name('SliderImageStore');
-            Route::put('/client/slider', [ClientsController::class, 'SliderImageDelete'])->name('SliderImageDelete');
+            Route::delete('/client/slider/{id}', [ClientsController::class, 'SliderImageDelete'])->name('SliderImageDelete');
         });
     });
 // End setting Controller

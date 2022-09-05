@@ -63,7 +63,7 @@
                         Certification Image
                     </label>
                     <div class="image-input image-input-empty" data-kt-image-input="true"
-                         style="width: 250px; background-image: url({{ $certification->image }})">
+                         style="width: 250px; background-image: url({{ asset('storage') . '/' . $certification->image }})">
                         <!--begin::Image preview wrapper-->
                         <div class="image-input-wrapper w-160px h-125px" style="width: 250px;"></div>
                         <!--end::Image preview wrapper-->

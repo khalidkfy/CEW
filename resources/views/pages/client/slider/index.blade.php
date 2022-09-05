@@ -130,8 +130,8 @@
                             <button class="btn btn-danger" style="width: 110px;" data-bs-toggle="modal" data-bs-target="#partners_image-{{ $image->id }}">
                                 <i class="fa-solid fa-trash"></i>
                                 <span>
-                                        Delete
-                                    </span>
+                                    Delete
+                                </span>
                             </button>
                         </td>
 
@@ -139,7 +139,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Delete Image From Partners Slider</h5>
+                                        <h5 class="modal-title">Delete Image From Clients Slider</h5>
 
                                         <!--begin::Close-->
                                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
@@ -156,7 +156,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                        <form action="{{ route('our_partners.deleteSliderImage', ['id' => $image->id ]) }}" method="POST">
+                                        <form action="{{ route('client.SliderImageDelete', ['id' => $image->id ]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-primary">Sure</button>

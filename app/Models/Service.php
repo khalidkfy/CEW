@@ -21,7 +21,6 @@ class Service extends Model
         's_button_text',
         's_button_active',
         'long_description',
-        'image',
         'color'
     ];
 }
