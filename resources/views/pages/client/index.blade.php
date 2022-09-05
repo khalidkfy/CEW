@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="row items">
-                @foreach ($client->images as $image)
+                @foreach ($images as $image)
                     <div class="col-md-4 col-lg-3">
                         <div class="item mb-4">
                             <figure class="mb-0">
-                                <img src="{{ asset('storage') . '/' . $image }}" alt="">
+                                <img src="{{ asset('storage') . '/' . $image->image }}" alt="">
                             </figure>
                         </div>
                     </div>

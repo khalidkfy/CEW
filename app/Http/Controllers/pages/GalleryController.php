@@ -117,8 +117,9 @@ class GalleryController extends Controller
     {
         $gallery = gallery::query()->findOrFail($id);
         $setting = Setting::query()->first();
+        $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.gallery.show', compact('gallery', 'setting'));
+        return view('pages.gallery.show', compact('gallery', 'setting', 'certifications'));
     }
 
     /**

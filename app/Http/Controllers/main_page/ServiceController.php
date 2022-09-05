@@ -39,7 +39,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'service_name' => ['required', 'string'],
             'short_description' => ['required'],
@@ -87,6 +86,7 @@ class ServiceController extends Controller
             's_button_text' => $request->s_button_text,
             'icon' => $icon,
             'header_image' => $header_image,
+            'color' => $request->color,
         ]);
 
         toastr()->success('Successfully Create');
@@ -125,6 +125,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $service = Service::query()->findOrFail($id);
 
         $request->validate([
@@ -174,6 +175,7 @@ class ServiceController extends Controller
             's_button_text' => $request->s_button_text,
             'icon' => $icon,
             'header_image' => $header_image,
+            'color' => $request->color,
         ]);
 
         toastr()->success('Successfully Updated');

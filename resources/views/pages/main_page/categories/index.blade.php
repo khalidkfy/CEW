@@ -59,17 +59,46 @@
                                         Edit
                                     </span>
                                 </a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_category-{{ $category->id }}">
+                                    <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
+                                    <span>
+                                        Delete
+                                    </span>
+                                </button>
 
-                                <form action="{{ route('category.delete', ['id' => $category->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" style="display: inline-flex;">
-                                        <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
-                                        <span>
-                                            Delete
-                                        </span>
-                                    </button>
-                                </form>
+                                <div class="modal fade" tabindex="-1" id="delete_category-{{ $category->id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete</h5>
+
+                                                <!--begin::Close-->
+                                                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span class="svg-icon svg-icon-2x"></span>
+                                                </div>
+                                                <!--end::Close-->
+                                            </div>
+
+                                            <div class="modal-body" style="justify-content: center; display: flex;">
+                                                <p>All products in this category will be deleted, are you sure ?</p>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                <form action="{{ route('category.delete', ['id' => $category->id]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" style="display: inline-flex;">
+                                                        <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
+                                                            <span>
+                                                                Delete
+                                                            </span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

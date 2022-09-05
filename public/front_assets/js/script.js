@@ -169,26 +169,29 @@ links.forEach(link => {
     })
 });
 
-icon.addEventListener('click', () => {
-    icon_toggle.classList.toggle('active');
-    mobile_menu.classList.toggle('active');
-    overbg.classList.toggle('active');
-})
+const swiper1 = new Swiper(".mySwiper", {
+    loop: false,
+    spaceBetween: 0,
+    slidesPerView: 3,
+    freeMode: true,
+    watchSlidesProgress: true,
+    direction: 'vertical',
+});
+const swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    spaceBetween: 0,
+    thumbs: {
+        swiper: swiper1,
+    },
+});
 
-/*overbg.addEventListener('click', () => {
-    icon_toggle.classList.remove('active');
-    mobile_menu.classList.remove('active');
-    overbg.classList.remove('active');
-})*/
-
-/*
 close_menu.addEventListener('click', (e) => {
     icon_toggle.classList.remove('active');
     mobile_menu.classList.remove('active');
     overbg.classList.remove('active');
     e.preventDefault()
 })
-*/
+
 
 let h2footer = document.querySelectorAll('.title-footer');
 
@@ -209,23 +212,17 @@ link_item.forEach(item01 => {
         item01.nextElementSibling.classList.toggle('active');
     });
 });
+icon.addEventListener('click', () => {
+    icon_toggle.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
+    overbg.classList.toggle('active');
+})
 
-const swiper1 = new Swiper(".mySwiper", {
-    loop: false,
-    spaceBetween: 0,
-    slidesPerView: 3,
-    // freeMode: true,
-    // watchSlidesProgress: true,
-    direction: 'vertical',
-});
-const swiper2 = new Swiper(".mySwiper2", {
-    loop: true,
-    spaceBetween: 0,
-    thumbs: {
-        swiper: swiper1,
-    },
-});
-
+overbg.addEventListener('click', () => {
+    icon_toggle.classList.remove('active');
+    mobile_menu.classList.remove('active');
+    overbg.classList.remove('active');
+})
 document.querySelector('#selector').addEventListener("focus", () => {
     document.querySelector('#dropdownbox').setAttribute("style", "");
 });

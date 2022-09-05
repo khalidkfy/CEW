@@ -114,10 +114,6 @@ class CertificationsController extends Controller
 
     public function aboutCertificationStore(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-        ]);
 
         $image = null;
 
@@ -132,8 +128,6 @@ class CertificationsController extends Controller
         }
 
         Certification::create([
-            'title' => $request->title,
-            'description' => $request->description,
             'image' => $image,
             'type' => 'About'
         ]);
@@ -152,11 +146,6 @@ class CertificationsController extends Controller
 
     public function aboutUpdateCertification(Request $request, $id)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],
-        ]);
-
         $certification = Certification::query()->findOrFail($id);
 
         $image = null;
@@ -172,8 +161,6 @@ class CertificationsController extends Controller
         }
 
         $certification->update([
-            'title' => $request->title,
-            'description' => $request->description,
             'image' => $image,
         ]);
 

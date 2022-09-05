@@ -383,6 +383,11 @@ Route::namespace('/pages')
             Route::get('/', [ClientsController::class, 'index'])->name('index')->withoutMiddleware('auth');
             Route::get('/{id}/edit', [ClientsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [ClientsController::class, 'update'])->name('update');
+
+            // Slider Image
+            Route::get('/client/slider', [ClientsController::class, 'SliderImage'])->name('SliderImage');
+            Route::post('/client/slider', [ClientsController::class, 'SliderImageStore'])->name('SliderImageStore');
+            Route::put('/client/slider', [ClientsController::class, 'SliderImageDelete'])->name('SliderImageDelete');
         });
     });
 // End setting Controller

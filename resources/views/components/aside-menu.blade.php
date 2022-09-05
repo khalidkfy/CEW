@@ -246,12 +246,37 @@
                         </a>
                     </div>
 
-                    <div class="menu-item">
-                        <a class="menu-link" href="{{ route('client.edit', ['id' => 1]) }}" title="Privacy" data-bs-toggle="tooltip"
-                           data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <i class="fa-brands fa-product-hunt fs-2"></i>
-                            <span class="menu-title ml-5" style="margin-left: 17px;">Client Page</span>
-                        </a>
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="fa-solid fa-handshake fs-2 mr-5" style="margin-top: -7px; color:#a6a6a9"></i>
+                            </span>
+                            <span class="menu-title">Client Page</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        {{-- End Our Partners Dropdown --}}
+
+                        {{-- Start Our Partners Links --}}
+                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('client.edit', ['id' => 1]) }}" title="Our Partners Table">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Table</span>
+                                </a>
+                            </div>
+
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('client.SliderImage') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Slider Image</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

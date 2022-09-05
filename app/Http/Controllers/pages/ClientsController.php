@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pages;
 use App\Http\Controllers\Controller;
 use App\Models\Certification;
 use App\Models\Client;
+use App\Models\ClientSlider;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,11 @@ class ClientsController extends Controller
     {
         $client = Client::query()->first();
         $setting = Setting::query()->first();
+        $images = ClientSlider::all();
 
         $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.client.index', compact('client', 'setting', 'certifications'));
+        return view('pages.client.index', compact('client', 'setting', 'certifications', 'images'));
     }
 
 
@@ -71,6 +73,46 @@ class ClientsController extends Controller
         ]);
 
         toastr()->success('Successfully Updated');
+
+        return redirect()->back();
+    }
+
+
+    public function SliderImage()
+    {
+        $images = ClientSlider::all();
+
+        return view('pages.client.slider.index', compact('images'));
+    }
+
+    public function SliderImageStore(Request $request)
+    {
+        $image = null;
+
+        if($request->hasFile('slider_image')){
+            $file = $request->file('slider_image');
+
+            $image = $file->store('client/slider', [
+                'disk' => 'public'
+            ]);
+        }
+
+        ClientSlider::create([
+            'image' => $image,
+        ]);
+
+        toastr()->success('Successfully Created');
+
+        return redirect()->back();
+    }
+
+    public function SliderImageDelete($id)
+    {
+        $image = ClientSlider::query()->findOrFail($id);
+
+        $image->delete();
+
+        toastr()->success('Successfully Deleted');
 
         return redirect()->back();
     }

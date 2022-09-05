@@ -61,7 +61,7 @@
                 <div class="row mb-10" style="display: flex">
 
                     {{-- Start Button Text --}}
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="exampleFormControlInput1" class="required form-label">Button Text</label>
                         <input type="text" name="button_text" class="form-control @error('button_text') is-invalid @enderror" placeholder="Here Is The Button Text"
                                value="{{ $service->button_text }}"/>
@@ -74,7 +74,7 @@
                     {{-- End Button Text --}}
 
                     {{-- Start Button Active --}}
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="required form-label">Button Active</label>
                         <select class="form-select" aria-label="Select example" name="button_active">
                             <option value="0" @if( $service->button_active == 0 ) selected @endif>Inactive</option>
@@ -82,6 +82,11 @@
                         </select>
                     </div>
                     {{-- Start Button Active --}}
+
+                    <div class="col-md-4">
+                        <label for="exampleColorInput" class="form-label">Color picker</label>
+                        <input type="color" class="form-control form-control-color" name="color" id="exampleColorInput" value="{{ $service->color }}" title="Choose your color">
+                    </div>
                 </div>
 
                 {{-- Start Title --}}
