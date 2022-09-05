@@ -25,12 +25,14 @@ class WhyChooseUsController extends Controller
 
         $image = null;
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
 
             $image = $file->store('/why_choose_us', [
                 'disk' => 'public'
             ]);
+        } else {
+            $image = $why_choose_us->image;
         }
 
         $why_choose_us->update([
@@ -42,6 +44,5 @@ class WhyChooseUsController extends Controller
         toastr()->success('Successfully Updated');
 
         return redirect()->back();
-
     }
 }
