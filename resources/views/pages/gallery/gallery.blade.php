@@ -31,14 +31,14 @@
                     <h2>Occasions </h2>
                 </div>
                 <div class="row">
-                    @foreach($galleries as $gallery)
+                    @foreach($albums as $album)
                         <div class="col-lg-3 col-md-4 ">
                             <div class="item mb-4">
                                 <figure>
-                                    <a href="{{ route('gallery.show', ['id' => $gallery->id]) }}"><img src="{{ asset('storage') . '/' . $gallery->cover_text }}" alt=""></a>
+                                    <a href="{{ route('album.singleShow', ['id' => $album->id]) }}"><img src="{{ asset('storage') . '/' . $album->cover_image }}" alt=""></a>
                                 </figure>
                                 <a href="" class="title">
-                                    {{ $gallery->gallery_title }}
+                                    {{ $album->title }}
                                 </a>
                             </div>
                         </div>

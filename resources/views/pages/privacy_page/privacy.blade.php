@@ -6,7 +6,7 @@
     <div id="main" class="page entry-content body-bg pt-5 pb-5">
         <div class="container">
             <div class="head">
-                <h2>Privacy </h2>
+                <h2>Privacy Policy </h2>
             </div>
             <div class="content">
                 @foreach($privacies as $privacy)

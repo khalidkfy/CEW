@@ -13,13 +13,17 @@
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
             <div class="card-title">
                 <!--begin::Search-->
-                <div class="row">
-                    <h4 class="d-block col-md-12">
-                        Faqs
-                    </h4>
-                    <div class="col-md-12 mt-4 d-flex align-items-center position-relative my-1">
-                        <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />
+                <div class="d-flex align-items-center position-relative my-1">
+                    <div class="row">
+                        <h4 class="col-md-12 mb-4">
+                            FAQs
+                        </h4>
+                        <div class="col-m-12">
+                            <i class="far fa-lightbulb fs-2 mt-3" style="position: absolute; left: 15px;"></i>
+                            <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />
+                        </div>
                     </div>
+
                 </div>
                 <!--end::Search-->
                 <!--begin::Export buttons-->
@@ -97,12 +101,6 @@
             var initDatatable = function () {
                 // Set date data order
                 const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT").format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
 
                 // Init datatable --- more info on datatables: https://datatables.net/manual/
                 datatable = $(table).DataTable({

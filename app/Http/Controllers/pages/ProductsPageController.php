@@ -17,7 +17,7 @@ class ProductsPageController extends Controller
     {
         $product_page = ProductPage::query()->first();
 
-        $products = Product::query()->limit(6)->get();
+        $products = Product::query()->paginate(6);
 
         $categories = Category::whereNull('parent_id')->get();
         $setting = Setting::query()->first();
@@ -58,5 +58,24 @@ class ProductsPageController extends Controller
         toastr()->success('Successfully Updated');
 
         return redirect()->back();
+    }
+
+
+    public function subCategory(Request $request)
+    {
+        $product = Product::query()->with('category')->where('sub_category_id', $request->category_id)->get();
+
+        return response()->json([
+            'data' => $product,
+        ]);
+    }
+
+    public function category(Request $request)
+    {
+        $product = Product::query()->with('category')->where('category_id', $request->category_id)->get();
+
+        return response()->json([
+            'data' => $product,
+        ]);
     }
 }

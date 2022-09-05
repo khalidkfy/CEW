@@ -68,7 +68,7 @@
                     <div class="image-input image-input-empty" data-kt-image-input="true"
                          style="width: 250px; background-image: url({{ $service->image }})">
                         <!--begin::Image preview wrapper-->
-                        <div class="image-input-wrapper w-160px h-125px" style="width: 250px;"></div>
+                        <div class="image-input-wrapper w-160px h-125px" style="width: 250px; background-image: url({{ asset('storage') . '/' . $service->image }})"></div>
                         <!--end::Image preview wrapper-->
 
                         <!--begin::Edit button-->

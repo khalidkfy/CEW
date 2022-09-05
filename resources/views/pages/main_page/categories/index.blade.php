@@ -49,7 +49,11 @@
                                 {{ $category->category_name }}
                             </td>
                             <td>
-                                {{ count($category->products) }}
+                                @if( $category->type == 'Category' )
+                                    {{ count($category->products) }}
+                                @elseif( $category->type == 'Sub_Category' )
+                                    {{ count($category->sub) }}
+                                @endif
                             </td>
                             <td class="text-end d-flex justify-content-end">
                                 <a href="{{ route('category.edit', ['id' => $category->id]) }}" class="btn btn-primary mx-3"

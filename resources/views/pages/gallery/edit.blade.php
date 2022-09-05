@@ -59,34 +59,10 @@
                 </div>
                 {{-- End Description --}}
 
-                {{-- Start gallery_title --}}
-                <div class="mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Gallery Title</label>
-                    <input type="text" name="gallery_title" class="form-control @error('gallery_title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
-                           value="{{ $gallery->gallery_title }}"/>
-                    @error('gallery_title')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End gallery_title --}}
-
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupFile01">Header Image</label>
                     <input type="file" name="header_image" class="form-control" id="inputGroupFile01">
                 </div>
-
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Galleries</label>
-                    <input type="file" name="gallery[]" class="form-control" id="inputGroupFile01" multiple>
-                </div>
-
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Cover Image</label>
-                    <input type="file" name="cover_text" class="form-control" id="inputGroupFile01">
-                </div>
-
 
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">

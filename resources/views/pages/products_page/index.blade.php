@@ -17,13 +17,13 @@
                         <ul>
                             @foreach($categories as $category)
                                 <li class="drop-menu">
-                                    <a class="link-item" data-value="{{ $category->id }}">
+                                    <a class="link-item" href="javascript:;" onclick="getProductsByCategoryId({{ $category->id }})">>
                                         {{ $category->category_name }}
                                     </a>
                                     <ul class="sub-menu">
                                         @foreach($category->children as $children)
                                             <li>
-                                                <a href="javascript:;" onclick="getProductsByCategoryId({{$children->id}})">
+                                                <a href="javascript:;" onclick="getProductsBySubCategoryId({{$children->id}})">
                                                     {{ $children->category_name }}
                                                 </a>
                                             </li>
@@ -35,15 +35,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-8">
-                    <div class="row">
+                <div class="col-lg-9 col-md-8" >
+                    <div class="row mb-5" id="product_space">
                         @foreach($products as $product)
-                            <div class="col-md-4 col-6">
+                            <div class="col-md-4 col-6" >
                                 <div class="item mb-4">
                                     <div class="item">
-                                        <figure><a href="{{ route('product.show', ['id' => $product->id]) }}">
-                                                <img src="{{ asset('storage') . '/' . $product->cover_image }}"
-                                                    alt=""></a></figure>
+                                        <figure>
+                                            <a href="{{ route('product.show', ['id' => $product->id]) }}">
+                                                <img src="{{ asset('storage') . '/' . $product->cover_image }}" alt="">
+                                            </a>
+                                        </figure>
                                         <div>
                                             @if($product->category)
                                                 <span>{{ $product->category->category_name }}</span>
@@ -58,6 +60,9 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="d-flex justify-content-center" id="paginate">
+                        {{ $products->links() }}
+                    </div>
                 </div>
             </div>
 
@@ -68,23 +73,92 @@
     <script src="{{ asset('front_assets/jquery.js') }}"></script>
     <script>
 
-        function getProductsByCategoryId(cateId) {
-            $.ajax({
-                url: "{{ route('') }}",
-                method : 'POST',
-                dataType:"json",
-                data : {
-                    cateId : cateId,
-                },
-                success: function (res) {
-                    alert(res)
+    </script>
+    <script>
 
+        function getProductsBySubCategoryId(cateId) {
+
+            $.ajax({
+                url: "{{ route('products_page.subCategory') }}",
+                method : 'get',
+                data : {
+                    category_id : cateId,
                 },
-                error :function(error) {
-                    alert(error);
+                dataType:"json",
+                success: function (data) {
+                    $('#product_space').empty();
+                    $('#paginate').empty();
+                    $.each(data.data, function(key, value){
+                        $('#product_space').append(`
+                            <div class="col-md-4 col-6">
+                                <div class="item mb-4">
+                                    <div class="item">
+                                        <figure>
+                                            <a href="/products/`+ value.id +`/show">
+                                                <img src="/storage/`+ value.cover_image + `" alt="">
+                                            </a>
+                                        </figure>
+                                        <div>
+
+                                            <span>`+ value.category.category_name +`</span>
+
+                                            <a href="/products/`+ value.id +`/show" class="title-p">` + value.product_name +`</a>
+                                            <span class="price"><strong> $`+value.price+`</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    })
+                },
+                error :function(data) {
+                    alert(data);
                 }
             })
+        }
+    </script>
 
+    <script>
+
+        function getProductsByCategoryId(cateId) {
+
+            $.ajax({
+                url: "{{ route('products_page.category') }}",
+                method : 'get',
+                data : {
+                    category_id : cateId,
+                },
+                dataType:"json",
+                success: function (data) {
+                    $('#product_space').empty();
+                    $('#paginate').empty();
+                    $.each(data.data, function(key, value){
+                        $('#product_space').append(`
+                            <div class="col-md-4 col-6">
+                                <div class="item mb-4">
+                                    <div class="item">
+                                        <figure>
+                                            <a href="/products/`+ value.id +`/show">
+                                                <img src="/storage/`+ value.cover_image + `" alt="">
+                                            </a>
+                                        </figure>
+                                        <div>
+
+                                            <span>`+ value.category.category_name +`</span>
+
+                                            <a href="/products/`+ value.id +`/show" class="title-p">` + value.product_name +`</a>
+                                            <span class="price"><strong> $`+ value.price +`</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    })
+                },
+                error :function(data) {
+                    alert(data);
+                }
+            })
         }
     </script>
 

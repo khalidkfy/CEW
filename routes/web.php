@@ -10,6 +10,8 @@ use App\Http\Controllers\main_page\TestimonialController;
 use App\Http\Controllers\main_page\WhoAreWeController;
 use App\Http\Controllers\main_page\WhyChooseUsController;
 use App\Http\Controllers\pages\AboutUsController;
+use App\Http\Controllers\pages\AlbumController;
+use App\Http\Controllers\pages\AlbumImageContoller;
 use App\Http\Controllers\pages\CertificationsController;
 use App\Http\Controllers\pages\ClientsController;
 use App\Http\Controllers\pages\ContactUsController;
@@ -260,8 +262,10 @@ Route::namespace('/pages')
             'as' => 'products_page.',
         ], function () {
             Route::get('/', [ProductsPageController::class, 'index'])->name('index')->withoutMiddleware('auth');
-//            Route::get('/{id}/edit', [ProductsPageController::class, 'edit'])->name('edit');
-//            Route::put('/{id}', [ProductsPageController::class, 'update'])->name('update');
+
+            // Ajax
+            Route::get('/subCategory', [ProductsPageController::class, 'subCategory'])->name('subCategory')->withoutMiddleware('auth');
+            Route::get('/category', [ProductsPageController::class, 'category'])->name('category')->withoutMiddleware('auth');
         });
     });
 // End products_page Controller
@@ -354,6 +358,34 @@ Route::namespace('/pages')
             Route::get('/{id}/edit', [GalleryController::class, 'edit'])->name('edit');
             Route::put('/{id}', [GalleryController::class, 'update'])->name('update');
             Route::delete('/{id}', [GalleryController::class, 'destroy'])->name('delete');
+
+        });
+        // Albums
+        Route::group([
+            'prefix' => ('/albums'),
+            'as' => 'album.',
+        ], function () {
+            Route::get('/', [AlbumController::class, 'index'])->name('index');
+            Route::get('/create', [AlbumController::class, 'create'])->name('create');
+            Route::post('/', [AlbumController::class, 'store'])->name('store');
+            Route::get('/{id}', [AlbumController::class, 'show'])->name('show');
+            Route::get('/{id}/singleShow', [GalleryController::class, 'show'])->name('singleShow')->withoutMiddleware(['auth']);
+            Route::get('/{id}/edit', [AlbumController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [AlbumController::class, 'update'])->name('update');
+            Route::delete('/{id}', [AlbumController::class, 'destroy'])->name('delete');
+        });
+
+        // Albums Image
+        Route::group([
+            'prefix' => ('/album_images'),
+            'as' => 'albumImage.',
+        ], function () {
+            Route::get('/', [AlbumImageContoller::class, 'index'])->name('index');
+            Route::get('/create', [AlbumImageContoller::class, 'create'])->name('create');
+            Route::post('/', [AlbumImageContoller::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [AlbumImageContoller::class, 'edit'])->name('edit');
+            Route::put('/{id}', [AlbumImageContoller::class, 'update'])->name('update');
+            Route::delete('/{id}', [AlbumImageContoller::class, 'destroy'])->name('delete');
         });
     });
 // End About Us Controller

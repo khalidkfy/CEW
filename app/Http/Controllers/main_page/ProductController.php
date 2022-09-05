@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::query()->orderBy('created_at', 'asc')->get();
         $categories = Category::all();
         $certifications = Certification::query()->where('type', 'Services')->get();
         return view('pages.main_page.product.index', compact('products', 'categories', 'certifications'));

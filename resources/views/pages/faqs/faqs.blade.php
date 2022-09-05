@@ -7,7 +7,7 @@
         <div class="container">
             <div class="head">
                 <h2>
-                    {{ $faq->page_title}}
+                    FAQS
                 </h2>
             </div>
             <div class="content">

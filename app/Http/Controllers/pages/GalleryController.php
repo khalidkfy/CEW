@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Album;
+use App\Models\AlbumImage;
 use App\Models\Certification;
 use App\Models\gallery;
 use App\Models\Setting;
@@ -17,7 +19,9 @@ class GalleryController extends Controller
         $setting = Setting::query()->first();
         $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.gallery.gallery', compact('galleries', 'gallery', 'setting', 'certifications'));
+        $albums = Album::all();
+
+        return view('pages.gallery.gallery', compact('galleries', 'gallery', 'setting', 'certifications', 'albums'));
     }
     /**
      * Display a listing of the resource.
@@ -27,6 +31,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = gallery::all();
+
 
         return view('pages.gallery.index', compact('galleries'));
     }
@@ -55,36 +60,6 @@ class GalleryController extends Controller
             'gallery_title' => ['required'],
         ]);
 
-        $image_path = null;
-
-        $cover_text = null;
-
-        //        $header_image = null;
-
-        $galleries = [];
-
-        if ($request->hasFile('gallery')) {
-            $files = $request->file('gallery');
-
-            foreach ($files as $file) {
-                $image_path = $file->store('/gallery', [
-                    'disk' => 'public',
-                ]);
-
-                $galleries[] = $image_path;
-            }
-        } else {
-            $image_path = null;
-        }
-
-        //        if($request->hasFile('cover_text')) {
-        //            $file = $request->file('cover_text');
-        //
-        //            $cover_text = $file->store('/gallery', [
-        //                'disk' => 'public',
-        //            ]);
-        //        }
-
         if ($request->hasFile('cover_text')) {
             $file = $request->file('cover_text');
 
@@ -97,14 +72,11 @@ class GalleryController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'header_image' => asset('storage') . '/' . 'gallery/header_image',
-            'gallery_title' => $request->gallery_title,
-            'galleries' => $galleries,
-            'cover_text' => $cover_text,
         ]);
 
         toastr()->success('Successfully Created');
 
-        return redirect()->route('gallery.index');
+        return redirect()->back();
     }
 
     /**
@@ -115,11 +87,12 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        $gallery = gallery::query()->findOrFail($id);
+        $album = Album::query()->findOrFail($id);
+        $albumImages = AlbumImage::where('album_id', $album->id)->get();
         $setting = Setting::query()->first();
         $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.gallery.show', compact('gallery', 'setting', 'certifications'));
+        return view('pages.gallery.show', compact('album', 'albumImages', 'setting', 'certifications'));
     }
 
     /**
@@ -143,41 +116,9 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request);
         $gallery = gallery::query()->findOrFail($id);
 
-        $array_of_images = $gallery->galleries;
-
-        $image_path = null;
-
-        if ($request->hasFile('gallery')) {
-            $files = $request->file('gallery');
-
-            foreach ($files as $file) {
-                $image_path = $file->store('/gallery', [
-                    'disk' => 'public',
-                ]);
-
-                $new_image = array_push($array_of_images, $image_path);
-            }
-        } else {
-            $image_path = null;
-        }
-
-        $cover_text = null;
-
         $header_image =  null;
-
-        if ($request->hasFile('cover_text')) {
-            $file = $request->file('cover_text');
-
-            $cover_text = $file->store('/gallery', [
-                'disk' => 'public',
-            ]);
-        } else {
-            $cover_text = $gallery->cover_text;
-        }
-
         if ($request->hasFile('header_image')) {
             $file = $request->file('header_image');
 
@@ -192,14 +133,11 @@ class GalleryController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'header_image' => $header_image,
-            'gallery_title' => $request->gallery_title,
-            'galleries' => $array_of_images,
-            'cover_text' => $cover_text,
         ]);
 
         toastr()->success('Successfully Created');
 
-        return redirect()->route('gallery.index');
+        return redirect()->back();
     }
 
     /**
@@ -216,6 +154,6 @@ class GalleryController extends Controller
 
         toastr()->success('Successfully Deleted');
 
-        return redirect()->route('gallery.index');
+        return redirect()->back();
     }
 }

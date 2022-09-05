@@ -1,37 +1,34 @@
 @extends('layouts.master')
 
-@section('page_title', 'About Certification')
+@section('page_title', 'Album')
 
 @section('css')
     {{--    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>--}}
 @endsection
 
-@section('nav_title', 'About Certification')
+@section('nav_title', 'Album')
 
 @section('content')
     <div class="card card-p-0 card-flush">
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
             <div class="card-title">
                 <!--begin::Search-->
-                <div class="d-flex align-items-center position-relative my-1">
-                    <div class="row">
-                        <h4 class="col-md-12 mb-4">
-                            About Certification
-                        </h4>
-                        <div class="col-m-12">
-                            <i class="far fa-lightbulb fs-2 mt-3" style="position: absolute; left: 15px;"></i>
-                            <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />
-                        </div>
+                <div class="row d-flex align-items-center position-relative my-1">
+                    <h4 class="col-md-12">
+                        Album
+                    </h4>
+                    <div class="col-md-12">
+                        <i class="far fa-lightbulb fs-2" style="position: absolute; left: 25px; top: 30px"></i>
+                        <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />
                     </div>
-
                 </div>
                 <!--end::Search-->
                 <!--begin::Export buttons-->
                 <div id="kt_datatable_example_1_export" class="d-none"></div>
                 <!--end::Export buttons-->
             </div>
-            <div class="card-toolbar flex-row-fluid justify-content-end gap-5" style="margin-top: 40px !important;">
-                <a href="{{ route('certification.aboutCreateCertification') }}" class="btn btn-success">Add About Certification</a>
+            <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                <a href="{{ route('album.create') }}" class="btn btn-success">Add Album</a>
             </div>
         </div>
         <div class="card-body">
@@ -39,40 +36,48 @@
                 <thead>
                 <!--begin::Table row-->
                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase">
-                    <th class="min-w-100px">Certification Title</th>
-                    <th class="min-w-100px">Certification Description</th>
-                    <th class="text-center min-w-100px pe-5">Operations</th>
+                    <th class="min-w-100px">Title</th>
+                    <th class="min-w-100px">NO.Images</th>
+                    <th class="text-end min-w-100px pe-5">Operations</th>
                 </tr>
                 <!--end::Table row-->
                 </thead>
                 <tbody class="fw-bold text-gray-600">
-                @foreach($certifications as $certification)
+                @foreach($albums as $album)
                     <tr class="odd">
                         <td>
-                            {{ $certification->title }}
+                            {{--                        <a href="#" class="text-dark text-hover-primary">Emma Smith</a>--}}
+                            {{ Str::limit($album->title, 30) }}
                         </td>
                         <td>
-                            {{ Str::limit($certification->description, 30) }}
+                            {{"0"}}
                         </td>
-
-                        <td class="text-end d-flex justify-content-center">
-                            <a href="{{ route('certification.aboutEditCertification', ['id' => $certification->id]) }}" class="btn btn-primary mx-3" style="width: 90px;">
+                        <td class="text-end d-flex justify-content-end">
+                            <a href="{{ route('album.edit', ['id' => $album->id]) }}" class="btn btn-primary" style="width: 90px; margin-right: 5px">
                                 <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                                 <span>
-                                Edit
-                            </span>
+                                    Edit
+                                </span>
                             </a>
 
-                            <form action="{{ route('certification.aboutDeleteCertification', ['id' => $certification->id] )}}" method="POST">
+                            <form action="{{ route('album.delete', ['id' => $album->id]) }}" method="POST" style="margin-right: 5px">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" style="display: inline-flex;">
-                                    <i class="fa-solid fa-trash" style="margin-top: 10px"></i>
+                                <button type="submit" class="btn btn-danger" style="width: 110px;">
+                                    <i class="fa-solid fa-trash"></i>
                                     <span>
                                         Delete
                                     </span>
                                 </button>
                             </form>
+
+                            <a href="{{ route('album.show', ['id' => $album->id]) }}" class="btn btn-warning" style="margin-right: 5px">
+                                <i class="fa-solid fa-eye" style="margin-top: -2px"></i>
+                                <span>
+                                    Show
+                                </span>
+                            </a>
+
                         </td>
                     </tr>
                 @endforeach
@@ -178,48 +183,5 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
-            $('#MPheader_button_action').change(function() {
-                if ($(this).val() == 1) {
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data:{
-                            action: 0,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data.action)
-                        },
-                        error: function(data) {
-                            console.log(data)
-                        },
-                    })
-
-                }else if ($(this).val() == 0){
-
-                    $.ajax({
-                        type: 'put',
-                        url: 'box_header/updateButtonActive',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')},
-                        data:{
-                            action: 1,
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            console.log(data.action)
-                        },
-                        error: function(data) {
-                            console.log(data)
-                        },
-                    })
-                };
-            })
-        })
-
-    </script>
 
 @endsection

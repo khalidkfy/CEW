@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('page_title', 'Gallery Add')
+@section('page_title', 'Add Album')
 
 @section('css')
 @endsection
 
-@section('nav_title', 'Gallery Add')
+@section('nav_title', 'Add Album')
 
 @section('content')
     <div class="card card-p-0 card-flush">
@@ -14,7 +14,7 @@
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <h4>
-                        Gallery Add
+                        Add Album
                     </h4>
                 </div>
                 <!--end::Search-->
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="card-body mb-5">
-            <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('album.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 {{-- Start Title --}}
@@ -35,29 +35,15 @@
                            />
                     @error('title')
                     <span class="text-danger">
-                            {{ $message }}
-                        </span>
+                        {{ $message }}
+                    </span>
                     @enderror
                 </div>
                 {{-- End Title --}}
 
-                {{-- Start Description --}}
-                <div class="mb-10">
-                    <label for="kt_docs_ckeditor_classic" class="required form-label">Description</label>
-                    <textarea name="description" id="kt_docs_ckeditor_classic" class="@error('description') is-invalid @enderror">
-
-                    </textarea>
-                    @error('description')
-                    <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                {{-- End Description --}}
-
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Header Image</label>
-                    <input type="file" name="header_image" class="form-control" id="inputGroupFile01">
+                    <label class="input-group-text" for="inputGroupFile01">Cover Image</label>
+                    <input type="file" name="cover_image" class="form-control" id="inputGroupFile01">
                 </div>
 
                 <div class="mb-10 justify-content-center" style="display: flex">

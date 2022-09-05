@@ -66,8 +66,8 @@
                             <td class="text-end pe-0">
                                 <img src="{{ asset('storage') . '/' . $product->cover_image }}" width="50" height="50">
                             </td>
-                            <td class="text-end d-flex justify-content-end">
-                                <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-primary mr-3" style="width: 90px;">
+                            <td class="text-end d-flex justify-content-end ">
+                                <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-primary" style="width: 90px; margin-right: 5px">
                                     <i class="fa-solid fa-pen-to-square" style="margin-top: -2px"></i>
                                     <span>
                                     Edit
