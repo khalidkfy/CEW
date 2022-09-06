@@ -104,7 +104,7 @@ const certifications = new Swiper('.certifications .swiper', {
 
 
 const swiper_product = new Swiper('.products .swiper', {
-    loop: true,
+    // loop: true,
     autoplay: {
         delay: 5000,
     },
@@ -182,7 +182,7 @@ icon.addEventListener('click', () => {
 //     mobile_menu.classList.remove('active');
 //     overbg.classList.remove('active');
 // })
-
+//
 // close_menu.addEventListener('click', (e) => {
 //     icon_toggle.classList.remove('active');
 //     mobile_menu.classList.remove('active');

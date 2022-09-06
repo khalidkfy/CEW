@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ $setting->header_image }}" width="40" height="40">
+                        <img src="{{ asset('storage') . '/' . $setting->header_image }}" width="40" height="40">
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ $setting->footer_image }}" width="40" height="40">
+                        <img src="{{ asset('storage') . '/' . $setting->footer_image }}" width="40" height="40">
                     </div>
                 </div>
 
