@@ -43,7 +43,6 @@ class ContactUsController extends Controller
             'full_name' => ['required', 'max:50'],
             'subject' => ['required', 'max:50'],
             'email' => ['required', 'email'],
-            'prefix_number' => ['required', 'max:3'],
             'phone_number' => ['required', 'max:10'],
             'message' => ['required'],
         ]);
@@ -52,7 +51,7 @@ class ContactUsController extends Controller
             'full_name' => $request->full_name,
             'subject' => $request->subject,
             'email' => $request->email,
-            'phone_number' => $request->prefix_number . $request->phone_number,
+            'phone_number' => $request->phone_number,
             'message' => $request->message,
         ]);
 
