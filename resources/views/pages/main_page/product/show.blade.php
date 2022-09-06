@@ -10,7 +10,7 @@
                     <li class="breadcrumb-item"><a href="#">Products</a></li>
                     <li class="breadcrumb-item">
                         <a href="#">
-                            @if($product->category)
+                            @if ($product->category)
                                 {{ $product->category->category_name }}
                             @else
                                 {{ 'Unknown Category' }}
@@ -39,10 +39,10 @@
                     <div class="d-flex gallery">
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
-                                @foreach ( $product->images as $image )
+                                @foreach ($product_images as $image)
                                     <div class="swiper-slide">
                                         <figure>
-                                            <img src="{{ asset('storage') . '/' . $image }}" />
+                                            <img src="{{ asset('storage') . '/' . $image->image }}" />
                                         </figure>
                                     </div>
                                 @endforeach
@@ -50,12 +50,12 @@
                         </div>
                         <div thumbsSlider="" class="swiper mySwiper v-slider-single">
                             <div class="swiper-wrapper">
-                                @foreach ($product->images as $image)
-                                 <div class="swiper-slide">
+                                @foreach ($product_images as $image)
+                                    <div class="swiper-slide">
                                         <figure>
-                                            <img src="{{ asset('storage') . '/' . $image }}" />
+                                            <img src="{{ asset('storage') . '/' . $image->image }}" />
                                         </figure>
-                                </div>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -127,7 +127,8 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Full Name</label>
-                            <input class="form-control @error('full_name') is-invalid @enderror" id="full_name" name="full_name" type="text" placeholder="Enter your Full Name">
+                            <input class="form-control @error('full_name') is-invalid @enderror" id="full_name"
+                                name="full_name" type="text" placeholder="Enter your Full Name">
                             @error('full_name')
                                 <span class="text-danger">
                                     {{ $message }}
@@ -136,7 +137,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" id="email" name="email" placeholder="Enter your email">
+                            <input class="form-control @error('email') is-invalid @enderror" type="text" id="email"
+                                name="email" placeholder="Enter your email">
                             @error('email')
                                 <span class="text-danger">
                                     {{ $message }}
@@ -146,7 +148,8 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Mobile Number</label>
                             <div class="d-flex align-items-center">
-                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" type="text" placeholder="Enter your Mobile Number">
+                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
+                                    id="phone_number" type="text" placeholder="Enter your Mobile Number">
                             </div>
                             @error('phone_number')
                                 <span class="text-danger">
@@ -156,7 +159,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Enter message"></textarea>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message"
+                                placeholder="Enter message"></textarea>
                             @error('message')
                                 <span class="text-danger">
                                     {{ $message }}
@@ -175,7 +179,6 @@
     <script src="{{ asset('front_assets/jquery.js') }}"></script>
 
     <script>
-
         $('#submit').click(function(e) {
             e.preventDefault();
 
@@ -192,7 +195,7 @@
                 data: {
                     _token: token,
                     product_id: product_id,
-                    full_name : full_name,
+                    full_name: full_name,
                     email: email,
                     phone_number: phone_number,
                     message: message,
@@ -200,23 +203,19 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                dataType:"json",
-                success: function (data) {
+                dataType: "json",
+                success: function(data) {
                     if (data.errors) {
-                        $.each(data.errors, function (key, value) {
+                        $.each(data.errors, function(key, value) {
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
                         });
                     }
                 },
-                error :function(data) {
+                error: function(data) {
                     alert('Fill The Form')
                 }
             })
         })
-
-
-
-
     </script>
 @endpush
