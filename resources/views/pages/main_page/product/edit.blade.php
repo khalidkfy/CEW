@@ -3,8 +3,8 @@
 @section('page_title', 'Product Edit')
 
 @section('css')
-    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('nav_title', 'Product Edit')
@@ -27,31 +27,34 @@
             </div>
         </div>
         <div class="card-body mb-5">
-            <form action="{{ route('product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('product.update', ['id' => $product->id]) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 {{-- Start Service Name --}}
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Product Name</label>
-                    <input type="text" name="product_name" class="form-control @error('product_name') is-invalid @enderror" placeholder="Put Some Words For Product Name Here"
-                           value="{{ $product->product_name }}"/>
+                    <input type="text" name="product_name"
+                        class="form-control @error('product_name') is-invalid @enderror"
+                        placeholder="Put Some Words For Product Name Here" value="{{ $product->product_name }}" />
                     @error('product_name')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
                     @enderror
                 </div>
                 {{-- End Service Name --}}
 
                 {{-- Start Short Description --}}
                 <div class="form-floating mb-10">
-                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+                    <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                        placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
                         {{ $product->description }}
                     </textarea>
                     <label for="floatingTextarea2">Description</label>
                     @error('description')
-                    <span class="text-danger">
+                        <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -61,12 +64,12 @@
                 {{-- Start Price --}}
                 <div class="mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">Price</label>
-                    <input type="text" name="price" class="form-control @error('title') is-invalid @enderror" placeholder="Put Some Words For Title Here"
-                           value="{{ $product->price }}"/>
+                    <input type="text" name="price" class="form-control @error('title') is-invalid @enderror"
+                        placeholder="Put Some Words For Title Here" value="{{ $product->price }}" />
                     @error('price')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
                     @enderror
                 </div>
                 {{-- End Price --}}
@@ -75,11 +78,12 @@
                 {{-- Start Long Description --}}
                 <div class="mb-10">
                     <label for="kt_docs_ckeditor_classic_2" class="required form-label">Long Description</label>
-                    <textarea name="long_description" id="kt_docs_ckeditor_classic_2" class="@error('long_description') is-invalid @enderror">
+                    <textarea name="long_description" id="kt_docs_ckeditor_classic_2"
+                        class="@error('long_description') is-invalid @enderror">
                         {{ $product->long_description }}
                     </textarea>
                     @error('long_description')
-                    <span class="text-danger">
+                        <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
@@ -89,12 +93,12 @@
                 <div class="row mb-10" style="display: flex">
 
 
-                    {{-- Start category_name  --}}
+                    {{-- Start category_name --}}
                     <div class="col-md-6">
                         <label class="required form-label">Category</label>
                         <select class="form-select" aria-label="Select example" name="category_id" id="product_category">
-                            @foreach( $categories as $category )
-                                <option value="{{ $category->id }}" @if( $category->id == $product->category->id ) selected @endif>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if ($category->id == $product->category->id) selected @endif>
                                     {{ $category->category_name }}
                                 </option>
                             @endforeach
@@ -104,7 +108,8 @@
 
                     <div class="col-md-6">
                         <label class="required form-label">Sub Category</label>
-                        <select class="form-select" aria-label="Select example" name="sub_category_id" id="product_category">
+                        <select class="form-select" aria-label="Select example" name="sub_category_id"
+                            id="product_category">
                             <option>
                                 {{ $product->subCategory->category_name }}
                             </option>
@@ -115,59 +120,57 @@
                 <div class="row">
                     <!--begin::Cover Image-->
                     <div class="col-md-4 mb-10">
-                        <label class="col-md-12 form-check-label mb-5" style="font-weight: 500; color: #3f4254; font-size: 1.05rem">
+                        <label class="col-md-12 form-check-label mb-5"
+                            style="font-weight: 500; color: #3f4254; font-size: 1.05rem">
                             Cover Image
                         </label>
                         <div class="image-input image-input-empty" data-kt-image-input="true"
-                             style="width: 250px; background-image: url({{ $product->cover_image }})">
+                            style="width: 250px; background-image: url({{ $product->cover_image }})">
                             <!--begin::Image preview wrapper-->
-                            <div class="image-input-wrapper w-160px h-125px" style="width: 250px; background-image: url({{ asset('storage') . '/' . $product->cover_image }})"></div>
+                            <div class="image-input-wrapper w-160px h-125px"
+                                style="width: 250px; background-image: url({{ asset('storage') . '/' . $product->cover_image }})">
+                            </div>
                             <!--end::Image preview wrapper-->
 
                             <!--begin::Edit button-->
                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                   data-kt-image-input-action="change"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-dismiss="click"
-                                   title="Change avatar">
+                                data-kt-image-input-action="change" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
 
                                 <!--begin::Inputs-->
-                                <input type="file" class="@error('cover_image') is-invalid @enderror" name="cover_image" accept=".png, .jpg, .jpeg .svg"/>
+                                <input type="file" class="@error('cover_image') is-invalid @enderror" name="cover_image"
+                                    accept=".png, .jpg, .jpeg .svg" />
                                 @error('cover_image')
-                                <span class="text-danger">
-                                    {{ $message }}
-                                </span>
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
                                 @enderror
 
-                                <input type="hidden" name="avatar_remove"/>
+                                <input type="hidden" name="avatar_remove" />
                                 <!--end::Inputs-->
                             </label>
                             <!--end::Edit button-->
 
                             <!--begin::Cancel button-->
                             <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="cancel"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Cancel avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
+                                data-kt-image-input-action="cancel" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                title="Cancel avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
                             <!--end::Cancel button-->
 
                             <!--begin::Remove button-->
                             <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                  data-kt-image-input-action="remove"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-dismiss="click"
-                                  title="Remove avatar">
-                            <i class="bi bi-x fs-2"></i>
-                        </span>
+                                data-kt-image-input-action="remove" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                title="Remove avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
                             <!--end::Remove button-->
                         </div>
                     </div>
                     <!--end::Icon-->
-               </div>
+                </div>
 
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
@@ -184,7 +187,7 @@
 
     <script>
         $(document).ready(function() {
-            $('select[name="category_id"]').change(function (){
+            $('select[name="category_id"]').change(function() {
                 var category_id = $(this).val();
 
                 $.ajax({
@@ -194,15 +197,16 @@
                         category_id: category_id,
                     },
                     dataType: 'json',
-                    success: function(data){
+                    success: function(data) {
                         $('select[name="sub_category_id"]').empty();
                         $.each(data.data, function(key, value) {
                             $('select[name="sub_category_id"]').append(
-                                '<option value="' + value.id + '">' + value.category_name +'</option>'
+                                '<option value="' + value.id + '">' + value
+                                .category_name + '</option>'
                             );
                         });
                     },
-                    error: function(data){
+                    error: function(data) {
                         console.log(data)
                     },
                 })

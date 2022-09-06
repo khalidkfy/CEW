@@ -63,7 +63,7 @@
     </div>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,18 +84,20 @@
                         <input type="hidden" value="{{ $service->id }}" name="service_id" id="service_id">
                         <div class="mb-3">
                             <label for="" class="form-label">Full Name</label>
-                            <input class="form-control @error('full_name') is-invalid @enderror" name="full_name" id="full_name" type="text" placeholder="Enter your Full Name">
+                            <input class="form-control @error('full_name') is-invalid @enderror" name="full_name"
+                                id="full_name" type="text" placeholder="Enter your Full Name">
                             @error('full_name')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" id="email" placeholder="Enter your email">
+                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
+                                id="email" placeholder="Enter your email">
                             @error('email')
-                            <span class="text-danger">
+                                <span class="text-danger">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -103,24 +105,26 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Mobile Number</label>
                             <div class="d-flex align-items-center">
-                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" type="text" placeholder="Enter your Mobile Number">
+                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number"
+                                    id="phone_number" type="text" placeholder="Enter your Mobile Number">
                             </div>
                             @error('prefix_number')
-                            <span class="text-danger">
+                                <span class="text-danger">
                                     {{ $message }}
                                 </span>
                             @enderror
                             @error('phone_number')
-                            <span class="text-danger">
+                                <span class="text-danger">
                                     {{ $message }}
                                 </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Enter message"></textarea>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message"
+                                placeholder="Enter message"></textarea>
                             @error('message')
-                            <span class="text-danger">
+                                <span class="text-danger">
                                     {{ $message }}
                                 </span>
                             @enderror
@@ -136,7 +140,6 @@
     <script src="{{ asset('front_assets/jquery.js') }}"></script>
 
     <script>
-
         $('#submit_service').click(function(e) {
             e.preventDefault();
 
@@ -148,12 +151,12 @@
             var message = $('#message').val();
 
             $.ajax({
-                url: "{{ route('sales.store') }}",
+                url: "/ces/public/sales_inquiry",
                 type: 'post',
                 data: {
                     _token: token,
                     service_id: service_id,
-                    full_name : full_name,
+                    full_name: full_name,
                     email: email,
                     phone_number: phone_number,
                     message: message,
@@ -161,24 +164,19 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                dataType:"json",
-                success: function (data) {
+                dataType: "json",
+                success: function(data) {
                     if (data.errors) {
-                        $.each(data.errors, function (key, value) {
+                        $.each(data.errors, function(key, value) {
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
                         });
                     }
                 },
-                error :function(data) {
+                error: function(data) {
                     // alert(data)
                 }
             })
         })
-
-
-
-
     </script>
 @endpush
-
