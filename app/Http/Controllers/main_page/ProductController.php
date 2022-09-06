@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\main_page;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Certification;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Category;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
+use App\Models\Certification;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {

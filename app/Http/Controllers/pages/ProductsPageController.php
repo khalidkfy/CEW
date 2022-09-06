@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Certification;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\ProductPage;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -23,8 +24,8 @@ class ProductsPageController extends Controller
         $setting = Setting::query()->first();
         $certifications = Certification::query()->where('type', 'Footer')->get();
 
-        return view('pages.products_page.index', compact('product_page', 'products', 'categories', 'setting', 'certifications'));
 
+        return view('pages.products_page.index', compact('product_page', 'products', 'categories', 'setting', 'certifications'));
     }
 
     public function edit($id)
@@ -36,18 +37,18 @@ class ProductsPageController extends Controller
 
     public function update(Request $request, $id)
     {
-//        dd($request);
+        //        dd($request);
         $product = ProductPage::query()->findOrFail($id);
 
         $image = null;
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
 
             $image = $file->store('/product_page', [
                 'disk' => 'public',
             ]);
-        }else{
+        } else {
             $image = $product->image;
         }
 
