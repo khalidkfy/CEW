@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::query()->with('sub', 'products')->get();
+        $categories = Category::query()->with('sub', 'products')->orderBy('created_at', 'asc')->get();
 
         return view('pages.main_page.categories.index', compact('categories'));
     }

@@ -102,6 +102,31 @@
 
                 </div>
 
+                {{-- Start facebook_address --}}
+                <div class="col-md-6 mb-10">
+                    <label for="exampleFormControlInput1" class="required form-label">Contact Us Title</label>
+                    <input type="text" name="contact_us_title" class="form-control @error('contact_us_title') is-invalid @enderror" placeholder="Put Some Words For a Here"
+                           value="{{ $setting->contact_us_title }}"/>
+                    @error('contact_us_title')
+                    <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+                {{-- End email_address --}}
+
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Contact Us Description</label>
+                    <textarea class="form-control @error('contact_us_description') is-invalid @enderror" name="contact_us_description" id="exampleFormControlTextarea1" rows="3">
+                        {{ $setting->contact_us_description}}
+                    </textarea>
+                    @error('contact_us_description')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
                 <div>
                     {{-- Start Product Enable --}}
                     <div class="col-md-6">

@@ -14,10 +14,9 @@
                         <div class="head">
                             <h2>Contact information</h2>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac, mi in ut quam Lorem ipsum dolor
-                            sit amet, consectLorem ipsum dolor sit amet, consectetur adipiscing elit. Ac, mi in ut quam
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac, mi in ut quam etur adipiscing
-                            elit. Ac, mi in ut quam </p>
+                        <p>
+                            {{ $setting->contact_us_description }}
+                        </p>
                         <ul>
                             <li><span class="mobile"></span> {{ $setting->phone_number }}</li>
                             <li><span class="email"></span> {{ $setting->email_address }}</li>
@@ -32,7 +31,9 @@
                 <div class="col-lg-8 col-md-7">
                     <div class="head">
                         <h2 class="mb-2">Contact us</h2>
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <p class="mb-0">
+                            {{ $setting->contact_us_title }}
+                        </p>
                     </div>
                     <form action="{{ route('contact_us.store') }}" method="POST">
                         @csrf

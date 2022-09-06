@@ -30,7 +30,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = gallery::all();
+        $galleries = gallery::query()->orderBy('created_at', 'asc')->get();
 
 
         return view('pages.gallery.index', compact('galleries'));

@@ -27,7 +27,9 @@ class SettingController extends Controller
             'phone_number' => ['required'],
             'facebook_address' => ['required'],
             'twitter_address' => ['required'],
-            'footer_description' => ['required']
+            'footer_description' => ['required'],
+            'contact_us_description' => ['required'],
+            'contact_us_title' => ['required'],
         ]);
 
         $header_image = $setting->header_image;
@@ -65,6 +67,8 @@ class SettingController extends Controller
             'footer_description' => $request->footer_description,
             'header_image' => $header_image,
             'footer_image' => $footer_image,
+            'contact_us_description' => $request->contact_us_description,
+            'contact_us_title' => $request->contact_us_title,
         ]);
 
         toastr()->success('Successfully Updated');

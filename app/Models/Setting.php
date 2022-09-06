@@ -20,6 +20,8 @@ class Setting extends Model
         'footer_image',
         'footer_description',
         'certifications',
+        'contact_us_title',
+        'contact_us_description',
     ];
 
     protected $casts = [

@@ -25,7 +25,7 @@ class PrivacyController extends Controller
      */
     public function index()
     {
-        $privacies = Privacy::all();
+        $privacies = Privacy::orderBy('created_at', 'asc')->get();
 
         return view('pages.privacy_page.index', compact('privacies'));
     }
