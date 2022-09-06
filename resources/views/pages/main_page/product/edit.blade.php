@@ -108,11 +108,12 @@
 
                     <div class="col-md-6">
                         <label class="required form-label">Sub Category</label>
-                        <select class="form-select" aria-label="Select example" name="sub_category_id"
-                            id="product_category">
-                            <option>
-                                {{ $product->subCategory->category_name }}
-                            </option>
+                        <select class="form-select" aria-label="Select example" name="sub_category_id" id="product_category">
+                            @foreach($sub_categories as $sub_category)
+                                <option value="{{ $sub_category->id }}" @if($sub_category->id == $product->subCategory->id) selected @endif>
+                                    {{ $sub_category->category_name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

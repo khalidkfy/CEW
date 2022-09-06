@@ -190,7 +190,7 @@
             var message = $('#message').val();
 
             $.ajax({
-                url: "/ces/public/sales_inquiry",
+                url: "/sales_inquiry",
                 type: 'post',
                 data: {
                     _token: token,
@@ -205,15 +205,17 @@
                 },
                 dataType: "json",
                 success: function(data) {
+                    $('#errors').empty();
                     if (data.errors) {
                         $.each(data.errors, function(key, value) {
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
                         });
                     }
+                    $('#staticBackdrop').modal('hide');
                 },
                 error: function(data) {
-                    alert('Fill The Form')
+
                 }
             })
         })

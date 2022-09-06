@@ -67,6 +67,7 @@ class ProductController extends Controller
     {
         $product = Product::query()->findOrFail($id);
         $products = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->get();
+
         $setting = Setting::query()->first();
         $certifications = Certification::query()->where('type', 'Footer')->get();
         $product_images = ProductImage::where('product_id', $product->id)->get();
@@ -77,7 +78,8 @@ class ProductController extends Controller
     {
         $product = Product::query()->findOrFail($id);
         $categories = Category::where('type', 'Category')->get();
-        return view('pages.main_page.product.edit', compact('product', 'categories'));
+        $sub_categories = Category::where('type', 'Sub_Category')->get();
+        return view('pages.main_page.product.edit', compact('product', 'categories', 'sub_categories'));
     }
 
     public function update(Request $request, $id)
