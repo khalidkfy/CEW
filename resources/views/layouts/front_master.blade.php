@@ -44,7 +44,7 @@
                 <nav>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="left">
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center justify-content-between">
                                 <div class="mobile_menu_icon">
                                     <div class="mobile_menu_toggle"></div>
                                 </div>

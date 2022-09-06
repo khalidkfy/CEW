@@ -33,7 +33,7 @@ class MainPageController extends Controller
 
         $data['who_are_we'] = MPWhoWeAre::query()->first();
 
-        $data['testimonials'] = Testimonial::query()->limit(3)->get();
+        $data['testimonials'] = Testimonial::query()->get();
 
         $data['setting'] = Setting::query()->first();
 

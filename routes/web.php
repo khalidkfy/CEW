@@ -5,6 +5,7 @@ use App\Http\Controllers\main_page\CategoryController;
 use App\Http\Controllers\main_page\MainPageController;
 use App\Http\Controllers\main_page\OurPartnersController;
 use App\Http\Controllers\main_page\ProductController;
+use App\Http\Controllers\main_page\ProductImagecontroller;
 use App\Http\Controllers\main_page\ServiceController;
 use App\Http\Controllers\main_page\TestimonialController;
 use App\Http\Controllers\main_page\WhoAreWeController;
@@ -154,6 +155,11 @@ Route::namespace('/product')
 
             // Ajax For Sub Category
             Route::get('/sub_category', [ProductController::class, 'getSubCategory'])->name('getSubCategory');
+
+            // Dashboard Single Product
+            Route::get('/{id}/product', [ProductImagecontroller::class, 'show'])->name('productShow');
+            Route::post('/product', [ProductImagecontroller::class, 'store'])->name('productStore');
+            Route::delete('/{id}/product', [ProductImagecontroller::class, 'destroy'])->name('productDelete');
         });
     });
 // End Product Controller

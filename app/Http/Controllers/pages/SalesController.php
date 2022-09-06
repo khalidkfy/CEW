@@ -31,7 +31,6 @@ class SalesController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => ['required', 'max:50'],
             'email' => ['required', 'email'],
-            'prefix_number' => ['required', 'max:3'],
             'phone_number' => ['required', 'max:10'],
             'message' => ['required'],
         ]);
@@ -41,17 +40,20 @@ class SalesController extends Controller
                 Sale::create([
                     'full_name' => $request->full_name,
                     'email' => $request->email,
-                    'phone_number' => $request->prefix_number . $request->phone_number,
+                    'phone_number' => $request->phone_number,
                     'message' => $request->message,
                     'service_id' => $request->service_id,
                 ]);
 
                 toastr()->success('Sent Successfully');
 
-                return redirect()->route('home');
+                return response()->json([
+                    'Done' => 'Done',
+                ]);
             }elseif ($validator->fails()) {
-                toastr()->error('There Is An Error, Try Again');
-                return redirect()->back()->withErrors($validator);
+                return response()->json([
+                    'errors' => $validator->errors(),
+                ]);
             }
         }
 
@@ -60,9 +62,9 @@ class SalesController extends Controller
                 Sale::create([
                     'full_name' => $request->full_name,
                     'email' => $request->email,
-                    'phone_number' => $request->prefix_number . $request->phone_number,
+                    'phone_number' => $request->phone_number,
                     'message' => $request->message,
-                    'service_id' => $request->product_id,
+                    'products_id' => $request->product_id,
                 ]);
 
                 toastr()->success('Sent Successfully');
@@ -70,8 +72,9 @@ class SalesController extends Controller
                 return redirect()->route('home');
 
             }elseif ($validator->fails()) {
-                toastr()->error('There Is An Error, Try Again');
-                return redirect()->back()->withErrors($validator);
+                return response()->json([
+                    'errors' => $validator->errors(),
+                ]);
             }
         }
     }

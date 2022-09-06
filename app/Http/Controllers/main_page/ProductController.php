@@ -36,24 +36,6 @@ class ProductController extends Controller
 
         $cover_image = null;
 
-        $image_path = null;
-
-        $images = [];
-
-        if ($request->hasFile('images')) {
-            $files = $request->file('images');
-
-            foreach ($files as $file) {
-                $image_path = $file->store('/product_images', [
-                    'disk' => 'public',
-                ]);
-
-                $images[] = $image_path;
-            }
-        } else {
-            $image_path = null;
-        }
-
         if ($request->hasFile('cover_image')) {
             $file = $request->file('cover_image');
 
@@ -71,7 +53,6 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
             'long_description' => $request->long_description,
-            'images' => $images,
             'cover_image' => $cover_image,
         ]);
 
@@ -108,25 +89,8 @@ class ProductController extends Controller
 
         $product = Product::query()->findOrFail($id);
 
-        $array_of_images = $product->images;
-
         $cover_image = $product->cover_image;
 
-        $image_path = null;
-
-        if ($request->hasFile('images')) {
-            $files = $request->file('images');
-
-            foreach ($files as $file) {
-                $image_path = $file->store('/product_images', [
-                    'disk' => 'public',
-                ]);
-
-                $new_image = array_push($array_of_images, $image_path);
-            }
-        } else {
-            $image_path = null;
-        }
 
         if ($request->hasFile('cover_image')) {
             $file = $request->file('cover_image');
@@ -145,7 +109,6 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'sub_category_id' => $request->sub_category_id,
             'long_description' => $request->long_description,
-            'images' => $array_of_images,
             'cover_image' => $cover_image,
         ]);
 

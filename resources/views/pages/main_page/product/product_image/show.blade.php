@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('page_title', 'Album Images')
+@section('page_title', 'Product Images')
 
 @section('css')
     {{--    <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"/>--}}
 @endsection
 
-@section('nav_title', 'Gallery | Album Images')
+@section('nav_title', 'Product | Album Images')
 
 @section('content')
     <div class="card card-p-0 card-flush">
@@ -17,7 +17,7 @@
                     {{--                    <i class="far fa-lightbulb fs-2" style="position: absolute; left: 15px;"></i>--}}
                     {{--                    <input type="text" data-kt-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Report" />--}}
                     <h4>
-                        Album Images
+                        Product Images
                     </h4>
                 </div>
                 <!--end::Search-->
@@ -29,13 +29,13 @@
                 <button href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add_partners_image">Add Image</button>
                 <div class="modal fade" tabindex="-1" id="add_partners_image">
                     <div class="modal-dialog">
-                        <form action="{{ route('albumImage.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product.productStore') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <input type="hidden" name="album_id" value="{{ $album->id }}">
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add Image From This Gallery</h5>
+                                    <h5 class="modal-title">Add Image From This Product</h5>
 
                                     <!--begin::Close-->
                                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
@@ -48,7 +48,7 @@
 
                                     <!--begin::Image input-->
                                     <label class="d-flex mb-4">
-                                        Album Image
+                                        Product Image
                                     </label>
                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(/assets/media/svg/avatars/blank.svg)">
                                         <!--begin::Image preview wrapper-->
@@ -117,7 +117,7 @@
                 <!--end::Table row-->
                 </thead>
                 <tbody class="fw-bold text-gray-600">
-                @foreach($images as $image)
+                @foreach($product_images as $image)
                     <tr class="odd">
                         <td>
                             {{ $image->id }}
@@ -126,10 +126,10 @@
                             <img src="{{ asset('storage') . '/' . $image->image }}" width="200" height="100" alt="{{ $image->id }}" style="background-color: #DDD">
                         </td>
                         <td style="width: 320px;">
-                            {{ $album->title }}
+                            {{ $product->product_name }}
                         </td>
                         <td class="text-end">
-                            <form action="{{ route('albumImage.delete', ['id' => $image->id]) }}" method="POST">
+                            <form action="{{ route('product.productDelete', ['id' => $image->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" style="width: 110px;">

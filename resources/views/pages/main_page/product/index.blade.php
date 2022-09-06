@@ -74,7 +74,7 @@
                                 </span>
                                 </a>
 
-                                <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST" >
+                                <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST" style="margin-right: 5px">
                                     @csrf
                                     @method('DELETE')
 
@@ -85,6 +85,13 @@
                                         </span>
                                     </button>
                                 </form>
+
+                                <a href="{{ route('product.productShow', ['id' => $product->id]) }}" class="btn btn-warning" style="margin-right: 5px">
+                                    <i class="fa-solid fa-eye" style="margin-top: -2px"></i>
+                                    <span>
+                                        Show
+                                    </span>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

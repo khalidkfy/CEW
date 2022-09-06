@@ -157,6 +157,7 @@ const swiper_testimonials = new Swiper('.testimonials .swiper', {
 });
 
 
+
 let icon = document.querySelector('.mobile_menu_icon');
 let icon_toggle = document.querySelector('.mobile_menu_toggle');
 let mobile_menu = document.querySelector('.menu');
@@ -170,29 +171,24 @@ links.forEach(link => {
     })
 });
 
-const swiper1 = new Swiper(".mySwiper", {
-    loop: false,
-    spaceBetween: 0,
-    slidesPerView: 3,
-    freeMode: true,
-    watchSlidesProgress: true,
-    direction: 'vertical',
-});
-const swiper2 = new Swiper(".mySwiper2", {
-    loop: true,
-    spaceBetween: 0,
-    thumbs: {
-        swiper: swiper1,
-    },
-});
-
-close_menu.addEventListener('click', (e) => {
-    icon_toggle.classList.remove('active');
-    mobile_menu.classList.remove('active');
-    overbg.classList.remove('active');
-    e.preventDefault()
+icon.addEventListener('click', () => {
+    icon_toggle.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
+    overbg.classList.toggle('active');
 })
 
+// overbg.addEventListener('click', () => {
+//     icon_toggle.classList.remove('active');
+//     mobile_menu.classList.remove('active');
+//     overbg.classList.remove('active');
+// })
+
+// close_menu.addEventListener('click', (e) => {
+//     icon_toggle.classList.remove('active');
+//     mobile_menu.classList.remove('active');
+//     overbg.classList.remove('active');
+//     e.preventDefault()
+// })
 
 let h2footer = document.querySelectorAll('.title-footer');
 
@@ -213,17 +209,23 @@ link_item.forEach(item01 => {
         item01.nextElementSibling.classList.toggle('active');
     });
 });
-icon.addEventListener('click', () => {
-    icon_toggle.classList.toggle('active');
-    mobile_menu.classList.toggle('active');
-    overbg.classList.toggle('active');
-})
 
-overbg.addEventListener('click', () => {
-    icon_toggle.classList.remove('active');
-    mobile_menu.classList.remove('active');
-    overbg.classList.remove('active');
-})
+const swiper1 = new Swiper(".mySwiper", {
+    loop: true,
+    spaceBetween: 0,
+    slidesPerView: 3,
+    freeMode: true,
+    watchSlidesProgress: true,
+    direction: 'vertical',
+});
+const swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    spaceBetween: 0,
+    thumbs: {
+        swiper: swiper1,
+    },
+});
+
 document.querySelector('#selector').addEventListener("focus", () => {
     document.querySelector('#dropdownbox').setAttribute("style", "");
 });
@@ -234,4 +236,3 @@ function onclickdropitem(id) {
 
     document.querySelector('#dropdownbox').setAttribute("style", "display:none");
 }
-

@@ -77,19 +77,23 @@
                     <form action="{{ route('sales.store') }}" method="POST">
                         @csrf
 
-                        <input type="hidden" value="{{ $service->id }}" name="service_id">
+                        <div class="alert alert-danger" id="errors" style="display: none">
+
+                        </div>
+
+                        <input type="hidden" value="{{ $service->id }}" name="service_id" id="service_id">
                         <div class="mb-3">
                             <label for="" class="form-label">Full Name</label>
-                            <input class="form-control @error('full_name') is-invalid @enderror" name="full_name" type="text" placeholder="Enter your Full Name">
+                            <input class="form-control @error('full_name') is-invalid @enderror" name="full_name" id="full_name" type="text" placeholder="Enter your Full Name">
                             @error('full_name')
                             <span class="text-danger">
-                                    {{ $message }}
-                                </span>
+                                {{ $message }}
+                            </span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="Enter your email">
+                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" id="email" placeholder="Enter your email">
                             @error('email')
                             <span class="text-danger">
                                     {{ $message }}
@@ -99,27 +103,7 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Mobile Number</label>
                             <div class="d-flex align-items-center">
-                                <div>
-                                    <input id="selector" class="form-control @error('prefix_number') is-invalid @enderror" name="prefix_number" type="text" placeholder="972" />
-
-                                    <div id="dropdownbox" style="display: none;">
-                                        <div id="test1" class="dropitem" onclick="onclickdropitem(this.id)">
-                                            <img src="assets/images/Flag_of_Palestine.png" />
-                                            <p class="droptext">972</p>
-                                        </div>
-
-                                        <div id="test2" class="dropitem" onclick="onclickdropitem(this.id)">
-                                            <img src="assets/images/Flag_of_Palestine.png" />
-                                            <p class="droptext">972</p>
-                                        </div>
-
-                                        <div id="test3" class="dropitem" onclick="onclickdropitem(this.id)">
-                                            <img src="assets/images/Flag_of_Palestine.png" />
-                                            <p class="droptext">972</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" type="text" placeholder="Enter your Mobile Number">
+                                <input class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" type="text" placeholder="Enter your Mobile Number">
                             </div>
                             @error('prefix_number')
                             <span class="text-danger">
@@ -134,17 +118,67 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="" placeholder="Enter message"></textarea>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Enter message"></textarea>
                             @error('message')
                             <span class="text-danger">
                                     {{ $message }}
                                 </span>
                             @enderror
                         </div>
-                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <input type="submit" value="Submit" id="submit_service" class="btn btn-primary">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{ asset('front_assets/jquery.js') }}"></script>
+
+    <script>
+
+        $('#submit_service').click(function(e) {
+            e.preventDefault();
+
+            var token = "{{ csrf_token() }}";
+            var service_id = $('#service_id').val();
+            var full_name = $('#full_name').val();
+            var email = $('#email').val();
+            var phone_number = $('#phone_number').val();
+            var message = $('#message').val();
+
+            $.ajax({
+                url: "{{ route('sales.store') }}",
+                type: 'post',
+                data: {
+                    _token: token,
+                    service_id: service_id,
+                    full_name : full_name,
+                    email: email,
+                    phone_number: phone_number,
+                    message: message,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType:"json",
+                success: function (data) {
+                    if (data.errors) {
+                        $.each(data.errors, function (key, value) {
+                            $('#errors').show();
+                            $('#errors').append('<p>' + value + '</p>');
+                        });
+                    }
+                },
+                error :function(data) {
+                    // alert(data)
+                }
+            })
+        })
+
+
+
+
+    </script>
+@endpush
+

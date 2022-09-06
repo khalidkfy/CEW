@@ -166,11 +166,6 @@
                     <!--end::Icon-->
                </div>
 
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                    <input type="file" class="form-control" name="images[]" id="inputGroupFile01" multiple>
-                </div>
-
                 <div class="mb-10 justify-content-center" style="display: flex">
                     <button type="submit" class="btn btn-success">
                         Save
