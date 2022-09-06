@@ -212,7 +212,7 @@
                             $('#errors').append('<p>' + value + '</p>');
 
                         });
-                    }else{
+                    }else if(!data.errors){
                         $('#staticBackdrop').modal('hide');
                     }
                 },
