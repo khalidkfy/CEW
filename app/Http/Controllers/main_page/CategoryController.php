@@ -163,6 +163,12 @@ class CategoryController extends Controller
             $product->delete();
         }
 
+        $sub_categories = Category::where('parent_id', $category->id)->get();
+
+        foreach ($sub_categories as $sub) {
+            $sub->delete();
+        }
+
         $category->delete();
 
         toastr()->success('Category Successfully Deleted');
