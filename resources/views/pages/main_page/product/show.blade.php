@@ -210,9 +210,11 @@
                         $.each(data.errors, function(key, value) {
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
+
                         });
+                    }else{
+                        $('#staticBackdrop').modal('hide');
                     }
-                    $('#staticBackdrop').modal('hide');
                 },
                 error: function(data) {
 
