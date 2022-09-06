@@ -190,7 +190,7 @@
             var message = $('#message').val();
 
             $.ajax({
-                url: "ces/public/sales_inquiry",
+                url: "/ces/public/sales_inquiry",
                 type: 'post',
                 data: {
                     _token: token,
