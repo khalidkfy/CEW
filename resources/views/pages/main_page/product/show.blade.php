@@ -22,7 +22,7 @@
                     </li>
                 </ol>
             </nav>
-            <div class="row align-items-center">
+            <div class="row align-items-center" >
                 <div class="col-lg-5">
                     <div class="content mb-4 mb-lg-0">
                         <h1>
@@ -32,7 +32,7 @@
                         <p>
                             {{ $product->description }}
                         </p>
-                        <a data-bs-toggle="modal" href="#staticBackdrop" class="btn btn-primary">Sales Inquiry</a>
+                        <a data-bs-toggle="modal" href="#modal_product" class="btn btn-primary">Sales Inquiry</a>
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modal_product" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -119,6 +119,10 @@
 
 
                         <div class="alert alert-danger" id="errors" style="display: none">
+
+                        </div>
+
+                        <div class="alert alert-success" id="success_call" style="display: none">
 
                         </div>
 
@@ -174,11 +178,27 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modal_after" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div style="margin-bottom: 17px; color: #080">
+                        <p class="mb-0">Send Successfully</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-bottom: 5px"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @push('js')
     <script src="{{ asset('front_assets/jquery.js') }}"></script>
+{{--    <script src="dist/tata.js"></script>--}}
 
     <script>
+
         $('#submit').click(function(e) {
             e.preventDefault();
 
@@ -206,14 +226,19 @@
                 dataType: "json",
                 success: function(data) {
                     $('#errors').empty();
-                    if (data.errors) {
+
+                    if (data.success) {
+                        $('#modal_product').modal('hide');
+                        $('#modal_after').modal('show');
+                        setInterval(function(){
+                            $('#modal_after').modal('hide');
+                        }, 2000)
+                    }else if(data.errors){
                         $.each(data.errors, function(key, value) {
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
 
                         });
-                    }else if(!data.errors){
-                        $('#staticBackdrop').modal('hide');
                     }
                 },
                 error: function(data) {

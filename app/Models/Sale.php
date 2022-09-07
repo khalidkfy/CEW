@@ -15,7 +15,7 @@ class Sale extends Model
         'prefix_number',
         'phone_number',
         'message',
-        'product_id',
+        'products_id',
         'service_id',
     ];
 }

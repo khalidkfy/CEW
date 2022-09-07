@@ -48,7 +48,7 @@ class SalesController extends Controller
                 toastr()->success('Sent Successfully');
 
                 return response()->json([
-                    'Done' => 'Done',
+                    'success' => 'Done',
                 ]);
             }elseif ($validator->fails()) {
                 return response()->json([
@@ -69,7 +69,9 @@ class SalesController extends Controller
 
                 toastr()->success('Sent Successfully');
 
-                return redirect()->route('home');
+                return response()->json([
+                    'success' => toastr()->success('Sent Successfully'),
+                ]);
 
             }elseif ($validator->fails()) {
                 return response()->json([

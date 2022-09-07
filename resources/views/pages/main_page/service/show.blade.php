@@ -29,7 +29,7 @@
                             <p>
                                 {!! \Illuminate\Support\Str::words($service->description, -1, '...') !!}
                             </p>
-                            <a data-bs-toggle="modal" href="#staticBackdrop" class="btn btn-primary">
+                            <a data-bs-toggle="modal" href="#modal_service" class="btn btn-primary">
                                 Sales Inquiry
                             </a>
                         </div>
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modal_service" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -135,6 +135,19 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal_after_s" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div style="margin-bottom: 17px; color: #080">
+                        <p class="mb-0">Send Successfully</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-bottom: 5px"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('js')
     <script src="{{ asset('front_assets/jquery.js') }}"></script>
@@ -171,6 +184,12 @@
                             $('#errors').show();
                             $('#errors').append('<p>' + value + '</p>');
                         });
+                    }else{
+                        $('#modal_service').modal('hide');
+                        $('#modal_after_s').modal('show');
+                        setInterval(function(){
+                            $('#modal_after_s').modal('hide');
+                        }, 2000)
                     }
                 },
                 error: function(data) {
